@@ -1,0 +1,238 @@
+[
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "LabelBinarizer",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "OneHotEncoder",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "fbeta_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "precision_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "recall_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "importlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "inspect",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "inspect",
+        "description": "inspect",
+        "detail": "inspect",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "setuptools",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "process_data",
+        "kind": 2,
+        "importPath": "starter.starter.ml.data",
+        "description": "starter.starter.ml.data",
+        "peekOfCode": "def process_data(\n    X, categorical_features=[], label=None, training=True, encoder=None, lb=None\n):\n    \"\"\" Process the data used in the machine learning pipeline.\n    Processes the data using one hot encoding for the categorical features and a\n    label binarizer for the labels. This can be used in either training or\n    inference/validation.\n    Note: depending on the type of model used, you may want to add in functionality that\n    scales the continuous data.\n    Inputs",
+        "detail": "starter.starter.ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "train_model",
+        "kind": 2,
+        "importPath": "starter.starter.ml.model",
+        "description": "starter.starter.ml.model",
+        "peekOfCode": "def train_model(X_train, y_train):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array\n        Labels.\n    Returns",
+        "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "compute_model_metrics",
+        "kind": 2,
+        "importPath": "starter.starter.ml.model",
+        "description": "starter.starter.ml.model",
+        "peekOfCode": "def compute_model_metrics(y, preds):\n    \"\"\"\n    Validates the trained machine learning model using precision, recall, and F1.\n    Inputs\n    ------\n    y : np.array\n        Known labels, binarized.\n    preds : np.array\n        Predicted labels, binarized.\n    Returns",
+        "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "inference",
+        "kind": 2,
+        "importPath": "starter.starter.ml.model",
+        "description": "starter.starter.ml.model",
+        "peekOfCode": "def inference(model, X):\n    \"\"\" Run model inferences and return the predictions.\n    Inputs\n    ------\n    model : ???\n        Trained machine learning model.\n    X : np.array\n        Data used for prediction.\n    Returns\n    -------",
+        "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "starter.starter.eda",
+        "description": "starter.starter.eda",
+        "peekOfCode": "def load_data():\n    return pd.read_csv('../data/census.csv')\n#%%  \ndf = load_data()\ndf.head()\n# %%\ndf.columns = df.columns.str.replace(' ', '')\n# %%\ndf.to_csv('../data/census_clean.csv')",
+        "detail": "starter.starter.eda",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "starter.starter.eda",
+        "description": "starter.starter.eda",
+        "peekOfCode": "df = load_data()\ndf.head()\n# %%\ndf.columns = df.columns.str.replace(' ', '')\n# %%\ndf.to_csv('../data/census_clean.csv')",
+        "detail": "starter.starter.eda",
+        "documentation": {}
+    },
+    {
+        "label": "df.columns",
+        "kind": 5,
+        "importPath": "starter.starter.eda",
+        "description": "starter.starter.eda",
+        "peekOfCode": "df.columns = df.columns.str.replace(' ', '')\n# %%\ndf.to_csv('../data/census_clean.csv')",
+        "detail": "starter.starter.eda",
+        "documentation": {}
+    },
+    {
+        "label": "cat_features",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "cat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",\n]",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "run_sanity_check",
+        "kind": 2,
+        "importPath": "starter.sanitycheck",
+        "description": "starter.sanitycheck",
+        "peekOfCode": "def run_sanity_check(test_dir):\n    #assert path.isdir(test_dir), FAIL_COLOR+f\"No direcotry named {test_dir} found in {os.getcwd()}\"\n    print('This script will perform a sanity test to ensure your code meets the criteria in the rubric.\\n')\n    print('Please enter the path to the file that contains your test cases for the GET() and POST() methods')\n    print('The path should be something like abc/def/test_xyz.py')\n    filepath = input('> ')\n    assert path.exists(filepath), f\"File {filepath} does not exist.\"\n    sys.path.append(path.dirname(filepath))\n    module_name = path.splitext(path.basename(filepath))[0]\n    module = importlib.import_module(module_name)",
+        "detail": "starter.sanitycheck",
+        "documentation": {}
+    },
+    {
+        "label": "FAIL_COLOR",
+        "kind": 5,
+        "importPath": "starter.sanitycheck",
+        "description": "starter.sanitycheck",
+        "peekOfCode": "FAIL_COLOR = '\\033[91m'\nOK_COLOR = '\\033[92m'\nWARN_COLOR = '\\033[93m'\ndef run_sanity_check(test_dir):\n    #assert path.isdir(test_dir), FAIL_COLOR+f\"No direcotry named {test_dir} found in {os.getcwd()}\"\n    print('This script will perform a sanity test to ensure your code meets the criteria in the rubric.\\n')\n    print('Please enter the path to the file that contains your test cases for the GET() and POST() methods')\n    print('The path should be something like abc/def/test_xyz.py')\n    filepath = input('> ')\n    assert path.exists(filepath), f\"File {filepath} does not exist.\"",
+        "detail": "starter.sanitycheck",
+        "documentation": {}
+    },
+    {
+        "label": "OK_COLOR",
+        "kind": 5,
+        "importPath": "starter.sanitycheck",
+        "description": "starter.sanitycheck",
+        "peekOfCode": "OK_COLOR = '\\033[92m'\nWARN_COLOR = '\\033[93m'\ndef run_sanity_check(test_dir):\n    #assert path.isdir(test_dir), FAIL_COLOR+f\"No direcotry named {test_dir} found in {os.getcwd()}\"\n    print('This script will perform a sanity test to ensure your code meets the criteria in the rubric.\\n')\n    print('Please enter the path to the file that contains your test cases for the GET() and POST() methods')\n    print('The path should be something like abc/def/test_xyz.py')\n    filepath = input('> ')\n    assert path.exists(filepath), f\"File {filepath} does not exist.\"\n    sys.path.append(path.dirname(filepath))",
+        "detail": "starter.sanitycheck",
+        "documentation": {}
+    },
+    {
+        "label": "WARN_COLOR",
+        "kind": 5,
+        "importPath": "starter.sanitycheck",
+        "description": "starter.sanitycheck",
+        "peekOfCode": "WARN_COLOR = '\\033[93m'\ndef run_sanity_check(test_dir):\n    #assert path.isdir(test_dir), FAIL_COLOR+f\"No direcotry named {test_dir} found in {os.getcwd()}\"\n    print('This script will perform a sanity test to ensure your code meets the criteria in the rubric.\\n')\n    print('Please enter the path to the file that contains your test cases for the GET() and POST() methods')\n    print('The path should be something like abc/def/test_xyz.py')\n    filepath = input('> ')\n    assert path.exists(filepath), f\"File {filepath} does not exist.\"\n    sys.path.append(path.dirname(filepath))\n    module_name = path.splitext(path.basename(filepath))[0]",
+        "detail": "starter.sanitycheck",
+        "documentation": {}
+    }
+]

@@ -2,6 +2,7 @@
 
 from sklearn.model_selection import train_test_split
 
+
 # Add the necessary imports for the starter code.
 
 # Add code to load in the data.
@@ -26,3 +27,5 @@ X_train, y_train, encoder, lb = process_data(
 # Proces the test data with the process_data function.
 
 # Train and save a model.
+
+# %%
