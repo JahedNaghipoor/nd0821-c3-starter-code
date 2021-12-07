@@ -49,12 +49,19 @@
         "documentation": {}
     },
     {
-        "label": "pandas",
-        "kind": 6,
+        "label": "GradientBoostingClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
         "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "GridSearchCV",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
         "documentation": {}
     },
     {
@@ -63,6 +70,24 @@
         "description": "sklearn.model_selection",
         "isExtraImport": true,
         "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
         "documentation": {}
     },
     {
@@ -80,6 +105,46 @@
         "description": "os",
         "isExtraImport": true,
         "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "process_data",
+        "importPath": "ml.data",
+        "description": "ml.data",
+        "isExtraImport": true,
+        "detail": "ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "train_model",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "compute_model_metrics",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "inference",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
         "documentation": {}
     },
     {
@@ -132,7 +197,7 @@
         "kind": 2,
         "importPath": "starter.starter.ml.data",
         "description": "starter.starter.ml.data",
-        "peekOfCode": "def process_data(\n    X, categorical_features=[], label=None, training=True, encoder=None, lb=None\n):\n    \"\"\" Process the data used in the machine learning pipeline.\n    Processes the data using one hot encoding for the categorical features and a\n    label binarizer for the labels. This can be used in either training or\n    inference/validation.\n    Note: depending on the type of model used, you may want to add in functionality that\n    scales the continuous data.\n    Inputs",
+        "peekOfCode": "def process_data(X, categorical_features=[], label=None, training=True, encoder=None, lb=None):\n    if label is not None:\n        y = X[label]\n        X = X.drop([label], axis=1)\n    else:\n        y = np.array([])\n    X_categorical = X[categorical_features].values\n    X_continuous = X.drop(*[categorical_features], axis=1)\n    if training is True:\n        encoder = OneHotEncoder(sparse=False, handle_unknown=\"ignore\")",
         "detail": "starter.starter.ml.data",
         "documentation": {}
     },
@@ -141,7 +206,7 @@
         "kind": 2,
         "importPath": "starter.starter.ml.model",
         "description": "starter.starter.ml.model",
-        "peekOfCode": "def train_model(X_train, y_train):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array\n        Labels.\n    Returns",
+        "peekOfCode": "def train_model(X_train, y_train, path):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array\n        Labels.\n    Returns",
         "detail": "starter.starter.ml.model",
         "documentation": {}
     },
@@ -159,35 +224,71 @@
         "kind": 2,
         "importPath": "starter.starter.ml.model",
         "description": "starter.starter.ml.model",
-        "peekOfCode": "def inference(model, X):\n    \"\"\" Run model inferences and return the predictions.\n    Inputs\n    ------\n    model : ???\n        Trained machine learning model.\n    X : np.array\n        Data used for prediction.\n    Returns\n    -------",
+        "peekOfCode": "def inference(model, X):\n    \"\"\" Run model inferences and return the predictions.\n    Inputs\n    ------\n    model : sklearn model\n        Trained machine learning model.\n    X : np.array\n        Data used for prediction.\n    Returns\n    -------",
         "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "RANDOM_STATE",
+        "kind": 5,
+        "importPath": "starter.starter.ml.model",
+        "description": "starter.starter.ml.model",
+        "peekOfCode": "RANDOM_STATE = 42\n# Optional: implement hyperparameter tuning.\ndef train_model(X_train, y_train, path):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array",
+        "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "clean_data",
+        "kind": 2,
+        "importPath": "starter.starter.data",
+        "description": "starter.starter.data",
+        "peekOfCode": "def clean_data(df):\n    df.replace({'?': None}, inplace=True)\n    df.dropna(inplace=True)\n    df.drop([\"capital-gain\", \"capital-loss\", \"education-num\", \"fnlgt\"], axis=\"columns\", inplace=True)\n    return df\ndef load_data(path):\n    return pd.read_csv(path, skipinitialspace=True)\ndef save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":",
+        "detail": "starter.starter.data",
         "documentation": {}
     },
     {
         "label": "load_data",
         "kind": 2,
-        "importPath": "starter.starter.eda",
-        "description": "starter.starter.eda",
-        "peekOfCode": "def load_data():\n    return pd.read_csv('../data/census.csv')\n#%%  \ndf = load_data()\ndf.head()\n# %%\ndf.columns = df.columns.str.replace(' ', '')\n# %%\ndf.to_csv('../data/census_clean.csv')",
-        "detail": "starter.starter.eda",
+        "importPath": "starter.starter.data",
+        "description": "starter.starter.data",
+        "peekOfCode": "def load_data(path):\n    return pd.read_csv(path, skipinitialspace=True)\ndef save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":\n    dir = \"../data/\"\n    load_path = os.path.join(dir, \"census.csv\")\n    df = load_data(load_path)\n    clean_df = clean_data(df)\n    save_path = os.path.join(dir, \"census_clean.csv\")",
+        "detail": "starter.starter.data",
         "documentation": {}
     },
     {
-        "label": "df",
-        "kind": 5,
-        "importPath": "starter.starter.eda",
-        "description": "starter.starter.eda",
-        "peekOfCode": "df = load_data()\ndf.head()\n# %%\ndf.columns = df.columns.str.replace(' ', '')\n# %%\ndf.to_csv('../data/census_clean.csv')",
-        "detail": "starter.starter.eda",
+        "label": "save_data",
+        "kind": 2,
+        "importPath": "starter.starter.data",
+        "description": "starter.starter.data",
+        "peekOfCode": "def save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":\n    dir = \"../data/\"\n    load_path = os.path.join(dir, \"census.csv\")\n    df = load_data(load_path)\n    clean_df = clean_data(df)\n    save_path = os.path.join(dir, \"census_clean.csv\")\n    save_data(clean_df, save_path)\n    print(\"Done\")",
+        "detail": "starter.starter.data",
         "documentation": {}
     },
     {
-        "label": "df.columns",
+        "label": "data_dir",
         "kind": 5,
-        "importPath": "starter.starter.eda",
-        "description": "starter.starter.eda",
-        "peekOfCode": "df.columns = df.columns.str.replace(' ', '')\n# %%\ndf.to_csv('../data/census_clean.csv')",
-        "detail": "starter.starter.eda",
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "data_dir = \"../data/\"   # the directory where the data is stored.\ndata_path = os.path.join(data_dir + \"census_clean.csv\") # path to the clean data\ndata = load_data(data_path)\n# Optional enhancement, use K-fold cross validation instead of a train-test split.\ntrain, test = train_test_split(data, test_size=0.20)    # 20% of the data will be used for testing\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "data_path",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "data_path = os.path.join(data_dir + \"census_clean.csv\") # path to the clean data\ndata = load_data(data_path)\n# Optional enhancement, use K-fold cross validation instead of a train-test split.\ntrain, test = train_test_split(data, test_size=0.20)    # 20% of the data will be used for testing\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "data = load_data(data_path)\n# Optional enhancement, use K-fold cross validation instead of a train-test split.\ntrain, test = train_test_split(data, test_size=0.20)    # 20% of the data will be used for testing\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",",
+        "detail": "starter.starter.train_model",
         "documentation": {}
     },
     {
@@ -195,7 +296,52 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "cat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",\n]",
+        "peekOfCode": "cat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",\n]   ",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "model_dir",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "model_dir = \"../model\"  # the directory where the model will be stored.\nmodel_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "model_path",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "model_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "classifier",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "classifier = train_model(X_train, y_train, model_path)  # train the model\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "y_train_predict",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "y_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "y_test_predict",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "y_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
