@@ -73,21 +73,20 @@
         "documentation": {}
     },
     {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
         "label": "pickle",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "pickle",
         "description": "pickle",
         "detail": "pickle",
-        "documentation": {}
-    },
-    {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
         "documentation": {}
     },
     {
@@ -108,6 +107,32 @@
         "documentation": {}
     },
     {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
         "label": "load_data",
         "importPath": "data",
         "description": "data",
@@ -121,6 +146,38 @@
         "description": "ml.data",
         "isExtraImport": true,
         "detail": "ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "process_data",
+        "importPath": "ml.data",
+        "description": "ml.data",
+        "isExtraImport": true,
+        "detail": "ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "compute_model_metrics",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "inference",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "train_model",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
         "documentation": {}
     },
     {
@@ -235,6 +292,60 @@
         "description": "starter.starter.ml.model",
         "peekOfCode": "RANDOM_STATE = 42\n# Optional: implement hyperparameter tuning.\ndef train_model(X_train, y_train, path):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array",
         "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 2,
+        "importPath": "starter.starter.tests.test_model",
+        "description": "starter.starter.tests.test_model",
+        "peekOfCode": "def root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)\n    encoder = os.path.join(root,model_dir, \"encoder.pkl\")",
+        "detail": "starter.starter.tests.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "files",
+        "kind": 2,
+        "importPath": "starter.starter.tests.test_model",
+        "description": "starter.starter.tests.test_model",
+        "peekOfCode": "def files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)\n    encoder = os.path.join(root,model_dir, \"encoder.pkl\")\n    with open(encoder, \"rb\") as f:\n        encoder = pickle.load(f)\n    lb = os.path.join(root, model_dir, \"lb.pkl\")",
+        "detail": "starter.starter.tests.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_data",
+        "kind": 2,
+        "importPath": "starter.starter.tests.test_model",
+        "description": "starter.starter.tests.test_model",
+        "peekOfCode": "def train_test_data(files):\n    data, _, _, _ = files\n    train, test = train_test_split(data, test_size=0.20, random_state=42)\n    return train, test\ndef test_train_model(files, root):\n    data, model, encoder, lb = files\n    train, test = train_test_split(data, test_size=0.20, random_state=42)\n    cat_features = [\n        \"workclass\",\n        \"education\",",
+        "detail": "starter.starter.tests.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "test_train_model",
+        "kind": 2,
+        "importPath": "starter.starter.tests.test_model",
+        "description": "starter.starter.tests.test_model",
+        "peekOfCode": "def test_train_model(files, root):\n    data, model, encoder, lb = files\n    train, test = train_test_split(data, test_size=0.20, random_state=42)\n    cat_features = [\n        \"workclass\",\n        \"education\",\n        \"marital-status\",\n        \"occupation\",\n        \"relationship\",\n        \"race\",",
+        "detail": "starter.starter.tests.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "data_dir",
+        "kind": 5,
+        "importPath": "starter.starter.tests.test_model",
+        "description": "starter.starter.tests.test_model",
+        "peekOfCode": "data_dir = \"../data/\"\nmodel_dir = \"../model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")",
+        "detail": "starter.starter.tests.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "model_dir",
+        "kind": 5,
+        "importPath": "starter.starter.tests.test_model",
+        "description": "starter.starter.tests.test_model",
+        "peekOfCode": "model_dir = \"../model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")\n    with open(model, \"rb\") as f:",
+        "detail": "starter.starter.tests.test_model",
         "documentation": {}
     },
     {
