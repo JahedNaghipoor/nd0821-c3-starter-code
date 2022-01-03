@@ -1,10 +1,35 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LogisticRegression
 import pickle
 
 
 RANDOM_STATE = 42
+# save the model
+def save_model(model, file):
+    """
+    save_model: saves a pickled model to a file.
+
+    Args:
+        model: The model to save
+        file: The file to save the model to.
+    """
+    with open(file, "wb") as f:
+        pickle.dump(model, f)
+
+# load the model
+def load_model(file):
+    """
+    load_model: loads a pickled model from a file.
+
+    Args:
+        file: The file to load the model from.
+
+    Returns:
+        model: logistic regression model
+    """
+    with open(file, "rb") as f:
+        model = pickle.load(f)
+    return model
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train, path):
@@ -22,21 +47,10 @@ def train_model(X_train, y_train, path):
     model
         Trained machine learning model.
     """
-    gbc= GradientBoostingClassifier(random_state=RANDOM_STATE)  # Gradient Boosting Classifier
-    parameters = {"n_estimators": (5, 10),
-                  "learning_rate": (0.1, 0.01, 0.001),
-                  "max_depth": [2, 3, 4],
-                  "max_features": ("auto", "log2")
-                  } # Hyperparameters
-    clf = GridSearchCV(gbc, parameters) # GridSearchCV
-    clf.fit(X_train, y_train)   # Fit the model
-    with open(path, 'wb') as file:
-        pickle.dump(clf.best_estimator_, file)  # Save the model
-    model = clf.best_estimator_ 
-    return model    # Return the best model
+    return LogisticRegression().fit(X_train,y_train)
 
 
-def compute_model_metrics(y, preds):
+def compute_model_metrics(y, predictions):
     """
     Validates the trained machine learning model using precision, recall, and F1.
 
@@ -52,9 +66,9 @@ def compute_model_metrics(y, preds):
     recall : float
     fbeta : float
     """
-    fbeta = fbeta_score(y, preds, beta=1, zero_division=1)
-    precision = precision_score(y, preds, zero_division=1)
-    recall = recall_score(y, preds, zero_division=1)
+    fbeta = fbeta_score(y, predictions, beta=1, zero_division=1)
+    precision = precision_score(y, predictions, zero_division=1)
+    recall = recall_score(y, predictions, zero_division=1)
     return precision, recall, fbeta # Return the metrics for the model.
 
 
