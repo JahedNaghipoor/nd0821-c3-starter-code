@@ -23,4 +23,3 @@ if __name__ == "__main__":
     
     save_path = os.path.join(dir, "census_clean.csv")
     save_data(clean_df, save_path)
-    print("Done")
