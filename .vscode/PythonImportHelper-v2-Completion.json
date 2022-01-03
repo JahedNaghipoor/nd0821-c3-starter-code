@@ -49,35 +49,11 @@
         "documentation": {}
     },
     {
-        "label": "GradientBoostingClassifier",
-        "importPath": "sklearn.ensemble",
-        "description": "sklearn.ensemble",
+        "label": "LogisticRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
         "isExtraImport": true,
-        "detail": "sklearn.ensemble",
-        "documentation": {}
-    },
-    {
-        "label": "GridSearchCV",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
-        "isExtraImport": true,
-        "detail": "sklearn.model_selection",
-        "documentation": {}
-    },
-    {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
-        "isExtraImport": true,
-        "detail": "sklearn.model_selection",
-        "documentation": {}
-    },
-    {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
-        "isExtraImport": true,
-        "detail": "sklearn.model_selection",
+        "detail": "sklearn.linear_model",
         "documentation": {}
     },
     {
@@ -87,6 +63,31 @@
         "importPath": "pickle",
         "description": "pickle",
         "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
+        "isExtraImport": true,
+        "detail": "fastapi.testclient",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
         "documentation": {}
     },
     {
@@ -116,12 +117,19 @@
         "documentation": {}
     },
     {
-        "label": "pytest",
-        "kind": 6,
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
         "isExtraImport": true,
-        "importPath": "pytest",
-        "description": "pytest",
-        "detail": "pytest",
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
         "documentation": {}
     },
     {
@@ -181,6 +189,14 @@
         "documentation": {}
     },
     {
+        "label": "save_model",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
         "label": "train_model",
         "importPath": "ml.model",
         "description": "ml.model",
@@ -202,6 +218,46 @@
         "description": "ml.model",
         "isExtraImport": true,
         "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "process_data",
+        "importPath": "starter.ml.data",
+        "description": "starter.ml.data",
+        "isExtraImport": true,
+        "detail": "starter.ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "inference",
+        "importPath": "starter.ml.model",
+        "description": "starter.ml.model",
+        "isExtraImport": true,
+        "detail": "starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "importPath": "starter.ml.model",
+        "description": "starter.ml.model",
+        "isExtraImport": true,
+        "detail": "starter.ml.model",
         "documentation": {}
     },
     {
@@ -250,12 +306,48 @@
         "documentation": {}
     },
     {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "process_data",
         "kind": 2,
         "importPath": "starter.starter.ml.data",
         "description": "starter.starter.ml.data",
         "peekOfCode": "def process_data(X, categorical_features=[], label=None, training=True, encoder=None, lb=None):\n    if label is not None:\n        y = X[label]\n        X = X.drop([label], axis=1)\n    else:\n        y = np.array([])\n    X_categorical = X[categorical_features].values\n    X_continuous = X.drop(*[categorical_features], axis=1)\n    if training is True:\n        encoder = OneHotEncoder(sparse=False, handle_unknown=\"ignore\")",
         "detail": "starter.starter.ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "save_model",
+        "kind": 2,
+        "importPath": "starter.starter.ml.model",
+        "description": "starter.starter.ml.model",
+        "peekOfCode": "def save_model(model, file):\n    \"\"\"\n    save_model: saves a pickled model to a file.\n    Args:\n        model: The model to save\n        file: The file to save the model to.\n    \"\"\"\n    with open(file, \"wb\") as f:\n        pickle.dump(model, f)\n# load the model",
+        "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "kind": 2,
+        "importPath": "starter.starter.ml.model",
+        "description": "starter.starter.ml.model",
+        "peekOfCode": "def load_model(file):\n    \"\"\"\n    load_model: loads a pickled model from a file.\n    Args:\n        file: The file to load the model from.\n    Returns:\n        model: logistic regression model\n    \"\"\"\n    with open(file, \"rb\") as f:\n        model = pickle.load(f)",
+        "detail": "starter.starter.ml.model",
         "documentation": {}
     },
     {
@@ -272,7 +364,7 @@
         "kind": 2,
         "importPath": "starter.starter.ml.model",
         "description": "starter.starter.ml.model",
-        "peekOfCode": "def compute_model_metrics(y, preds):\n    \"\"\"\n    Validates the trained machine learning model using precision, recall, and F1.\n    Inputs\n    ------\n    y : np.array\n        Known labels, binarized.\n    preds : np.array\n        Predicted labels, binarized.\n    Returns",
+        "peekOfCode": "def compute_model_metrics(y, predictions):\n    \"\"\"\n    Validates the trained machine learning model using precision, recall, and F1.\n    Inputs\n    ------\n    y : np.array\n        Known labels, binarized.\n    preds : np.array\n        Predicted labels, binarized.\n    Returns",
         "detail": "starter.starter.ml.model",
         "documentation": {}
     },
@@ -290,8 +382,35 @@
         "kind": 5,
         "importPath": "starter.starter.ml.model",
         "description": "starter.starter.ml.model",
-        "peekOfCode": "RANDOM_STATE = 42\n# Optional: implement hyperparameter tuning.\ndef train_model(X_train, y_train, path):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array",
+        "peekOfCode": "RANDOM_STATE = 42\n# save the model\ndef save_model(model, file):\n    \"\"\"\n    save_model: saves a pickled model to a file.\n    Args:\n        model: The model to save\n        file: The file to save the model to.\n    \"\"\"\n    with open(file, \"wb\") as f:",
         "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "test_main_route_OK",
+        "kind": 2,
+        "importPath": "starter.starter.tests.test_api",
+        "description": "starter.starter.tests.test_api",
+        "peekOfCode": "def test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "detail": "starter.starter.tests.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_main_route_message",
+        "kind": 2,
+        "importPath": "starter.starter.tests.test_api",
+        "description": "starter.starter.tests.test_api",
+        "peekOfCode": "def test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "detail": "starter.starter.tests.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "starter.starter.tests.test_api",
+        "description": "starter.starter.tests.test_api",
+        "peekOfCode": "client = TestClient(app)\ndef test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "detail": "starter.starter.tests.test_api",
         "documentation": {}
     },
     {
@@ -371,7 +490,7 @@
         "kind": 2,
         "importPath": "starter.starter.data",
         "description": "starter.starter.data",
-        "peekOfCode": "def save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":\n    dir = \"../data/\"\n    load_path = os.path.join(dir, \"census.csv\")\n    df = load_data(load_path)\n    clean_df = clean_data(df)\n    save_path = os.path.join(dir, \"census_clean.csv\")\n    save_data(clean_df, save_path)\n    print(\"Done\")",
+        "peekOfCode": "def save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":\n    dir = \"../data/\"\n    load_path = os.path.join(dir, \"census.csv\")\n    df = load_data(load_path)\n    clean_df = clean_data(df)\n    save_path = os.path.join(dir, \"census_clean.csv\")\n    save_data(clean_df, save_path)",
         "detail": "starter.starter.data",
         "documentation": {}
     },
@@ -416,7 +535,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_dir = \"../model\"  # the directory where the model will be stored.\nmodel_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "peekOfCode": "model_dir = \"../model\"  # the directory where the model will be stored.\nmodel_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, 'model.pkl')\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -425,7 +544,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "peekOfCode": "model_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, 'model.pkl')\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -434,7 +553,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "classifier = train_model(X_train, y_train, model_path)  # train the model\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "peekOfCode": "classifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, 'model.pkl')\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -443,7 +562,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "y_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "peekOfCode": "y_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -452,8 +571,53 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "y_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics",
+        "peekOfCode": "y_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
         "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "Data",
+        "kind": 6,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "class Data(BaseModel): \n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str\n    race: str",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "greetings",
+        "kind": 2,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "def greetings():\n    return {\"Greetings!!!\"}\n@app.post(\"/inference/\") # greetings route\ndef inference(data: Data):\n    dict = {\n        \"age\": data.age,\n        \"workclass\": data.workclass,\n        \"fnlgt\": data.fnlgt,\n        \"education\": data.education,\n        \"education-num\": data.education_num,",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "inference",
+        "kind": 2,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "def inference(data: Data):\n    dict = {\n        \"age\": data.age,\n        \"workclass\": data.workclass,\n        \"fnlgt\": data.fnlgt,\n        \"education\": data.education,\n        \"education-num\": data.education_num,\n        \"marital-status\": data.marital_status,\n        \"occupation\": data.occupation,\n        \"relationship\": data.relationship,",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "categorical_features",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "categorical_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",\n]",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "app = FastAPI() # initialize the application\nclass Data(BaseModel): \n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str",
+        "detail": "starter.main",
         "documentation": {}
     },
     {
@@ -490,6 +654,42 @@
         "description": "starter.sanitycheck",
         "peekOfCode": "WARN_COLOR = '\\033[93m'\ndef run_sanity_check(test_dir):\n    #assert path.isdir(test_dir), FAIL_COLOR+f\"No direcotry named {test_dir} found in {os.getcwd()}\"\n    print('This script will perform a sanity test to ensure your code meets the criteria in the rubric.\\n')\n    print('Please enter the path to the file that contains your test cases for the GET() and POST() methods')\n    print('The path should be something like abc/def/test_xyz.py')\n    filepath = input('> ')\n    assert path.exists(filepath), f\"File {filepath} does not exist.\"\n    sys.path.append(path.dirname(filepath))\n    module_name = path.splitext(path.basename(filepath))[0]",
         "detail": "starter.sanitycheck",
+        "documentation": {}
+    },
+    {
+        "label": "predict_uri",
+        "kind": 5,
+        "importPath": "api",
+        "description": "api",
+        "peekOfCode": "predict_uri = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict\"\nsample = {\n    'age': 42,\n    'workclass': 'Private',\n    'fnlgt': 159449,\n    'education': 'Bachelors',\n    'education-num': 13,\n    'marital-status': 'Married-civ-spouse',\n    'occupation': 'Exec-managerial',\n    'relationship': 'Husband',",
+        "detail": "api",
+        "documentation": {}
+    },
+    {
+        "label": "sample",
+        "kind": 5,
+        "importPath": "api",
+        "description": "api",
+        "peekOfCode": "sample = {\n    'age': 42,\n    'workclass': 'Private',\n    'fnlgt': 159449,\n    'education': 'Bachelors',\n    'education-num': 13,\n    'marital-status': 'Married-civ-spouse',\n    'occupation': 'Exec-managerial',\n    'relationship': 'Husband',\n    'race': 'White',",
+        "detail": "api",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "kind": 5,
+        "importPath": "api",
+        "description": "api",
+        "peekOfCode": "request = requests.post(predict_uri, json=sample)\nassert request.status_code == 200\nassert request.json() == {\"prediction\": 1}\ndict = {\n    'Request body':sample,\n    'Status code': request.status_code,\n    'Response': request.json()   \n}\nprint(json.dumps(dict, indent=4))",
+        "detail": "api",
+        "documentation": {}
+    },
+    {
+        "label": "dict",
+        "kind": 5,
+        "importPath": "api",
+        "description": "api",
+        "peekOfCode": "dict = {\n    'Request body':sample,\n    'Status code': request.status_code,\n    'Response': request.json()   \n}\nprint(json.dumps(dict, indent=4))",
+        "detail": "api",
         "documentation": {}
     }
 ]
