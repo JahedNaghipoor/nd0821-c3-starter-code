@@ -60,7 +60,7 @@ def test_train_model(files, root):
         train, categorical_features=cat_features, label="salary", training=True
     )
     filepath = os.path.join(root, model_dir, "gbclassifier_test.pkl")
-    model = train_model(X_train, y_train, filepath=filepath)
+    model = train_model(X_train, y_train, filepath)
 
     assert os.path.exists(filepath)
     return X_train, y_train, model, encoder, lb
