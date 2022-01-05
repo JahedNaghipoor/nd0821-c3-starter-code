@@ -580,7 +580,7 @@
         "kind": 6,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "class Data(BaseModel): \n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str\n    race: str",
+        "peekOfCode": "class Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str\n    race: str",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -589,16 +589,16 @@
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def greetings():\n    return {\"Greetings!!!\"}\n@app.post(\"/inference/\") # greetings route\ndef inference(data: Data):\n    dict = {\n        \"age\": data.age,\n        \"workclass\": data.workclass,\n        \"fnlgt\": data.fnlgt,\n        \"education\": data.education,\n        \"education-num\": data.education_num,",
+        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return {\"Greetings!!!\"}\n@app.post(\"/inference/\")  # greetings route\ndef inference_route(data: Data):\n    \"\"\"",
         "detail": "starter.main",
         "documentation": {}
     },
     {
-        "label": "inference",
+        "label": "inference_route",
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def inference(data: Data):\n    dict = {\n        \"age\": data.age,\n        \"workclass\": data.workclass,\n        \"fnlgt\": data.fnlgt,\n        \"education\": data.education,\n        \"education-num\": data.education_num,\n        \"marital-status\": data.marital_status,\n        \"occupation\": data.occupation,\n        \"relationship\": data.relationship,",
+        "peekOfCode": "def inference_route(data: Data):\n    \"\"\"\n    inference_route [summary]\n    [extended_summary]\n    Args:\n        data (Data):  base model for data\n    Returns:\n        float: prediction\n    \"\"\"\n    dictionary = {",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -616,7 +616,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "app = FastAPI() # initialize the application\nclass Data(BaseModel): \n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str",
+        "peekOfCode": "app = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str",
         "detail": "starter.main",
         "documentation": {}
     },

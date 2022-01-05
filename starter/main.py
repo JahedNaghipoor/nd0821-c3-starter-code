@@ -1,12 +1,13 @@
-from fastapi import FastAPI
-from pydantic import BaseModel # pydantic is a python data validation library
-import pandas as pd
+"""
+This code is used to test the API.
+"""
 import os
+from fastapi import FastAPI
+from pydantic import BaseModel  # pydantic is a python data validation library
+import pandas as pd
 
 from starter.ml.data import process_data
 from starter.ml.model import inference, load_model
-
-import os
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
@@ -25,9 +26,10 @@ categorical_features = [
     "native-country",
 ]
 
-app = FastAPI() # initialize the application
+app = FastAPI()  # initialize the application
 
-class Data(BaseModel): 
+
+class Data(BaseModel):
     age: int
     workclass: str
     fnlgt: int
@@ -42,15 +44,33 @@ class Data(BaseModel):
     capital_loss: int
     hours_per_week: int
     native_country: str
-    
-@app.get("/") # greetings route
+
+
+@app.get("/")  # greetings route
 def greetings():
+    """
+    greetings route
+
+    Returns:
+        string: a greetings message
+    """
     return {"Greetings!!!"}
 
 
-@app.post("/inference/") # greetings route
-def inference(data: Data):
-    dict = {
+@app.post("/inference/")  # greetings route
+def inference_route(data: Data):
+    """
+    inference_route [summary]
+
+    [extended_summary]
+
+    Args:
+        data (Data):  base model for data
+
+    Returns:
+        float: prediction
+    """
+    dictionary = {
         "age": data.age,
         "workclass": data.workclass,
         "fnlgt": data.fnlgt,
@@ -67,15 +87,14 @@ def inference(data: Data):
         "native-country": data.native_country
     }
 
-    data = pd.DataFrame.from_dict(dict)
+    data = pd.DataFrame.from_dict(dictionary)
 
     encoder = load_model('encoder.pkl')
     model = load_model('model.pkl')
     label = load_model('lb.pkl')
 
     X, _, _, _ = process_data(
-        data, categorical_features=categorical_features, training=False, encoder=encoder
-    )
+        data, categorical_features=categorical_features, training=False, encoder=encoder)
     predictions = inference(model, X.reshape(1, 108))
     predictions = label.inverse_transform(predictions)
     return predictions[0]
