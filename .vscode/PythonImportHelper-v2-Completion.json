@@ -422,7 +422,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "def root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, \"starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")\n    model = os.path.join(root, model_dir, \"lr_model.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)",
+        "peekOfCode": "def root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, \"/starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")\n    model = os.path.join(root, model_dir, \"lr_model.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
@@ -431,7 +431,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "def files(root):\n    load_path = os.path.join(root, \"starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")\n    model = os.path.join(root, model_dir, \"lr_model.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)\n    encoder = os.path.join(root, model_dir, \"encoder.pkl\")\n    with open(encoder, \"rb\") as f:\n        encoder = pickle.load(f)",
+        "peekOfCode": "def files(root):\n    load_path = os.path.join(root, \"/starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")\n    model = os.path.join(root, model_dir, \"lr_model.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)\n    encoder = os.path.join(root, model_dir, \"encoder.pkl\")\n    with open(encoder, \"rb\") as f:\n        encoder = pickle.load(f)",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
@@ -458,7 +458,7 @@
         "kind": 5,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "data_dir = \"data/\"\nmodel_dir = \"model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, \"starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")",
+        "peekOfCode": "data_dir = \"data/\"\nmodel_dir = \"model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, \"/starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
@@ -467,7 +467,7 @@
         "kind": 5,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "model_dir = \"model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, \"starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")\n    model = os.path.join(root, model_dir, \"lr_model.pkl\")",
+        "peekOfCode": "model_dir = \"model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, \"/starter/data/census_cleaned.csv\")\n    data = load_data(load_path)\n    #data = pd.read_csv(\"../data/census.csv\")\n    model = os.path.join(root, model_dir, \"lr_model.pkl\")",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
