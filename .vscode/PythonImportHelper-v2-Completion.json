@@ -205,30 +205,6 @@
         "documentation": {}
     },
     {
-        "label": "process_data",
-        "importPath": "starter.ml.data",
-        "description": "starter.ml.data",
-        "isExtraImport": true,
-        "detail": "starter.ml.data",
-        "documentation": {}
-    },
-    {
-        "label": "inference",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
-        "isExtraImport": true,
-        "detail": "starter.ml.model",
-        "documentation": {}
-    },
-    {
-        "label": "load_model",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
-        "isExtraImport": true,
-        "detail": "starter.ml.model",
-        "documentation": {}
-    },
-    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -566,7 +542,7 @@
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def predict_salary_level(item: Data):\n    item_dict = item.dict()\n    X = pd.DataFrame([[item_dict[column] for column in columns]], columns=columns)\n    X_categorical = X[categorical_features].values\n    X_continuous = X.drop(*[categorical_features], axis=1)\n    X_categorical = encoder.transform(X_categorical)\n    X = np.concatenate([X_continuous, X_categorical], axis=1)\n    pred = int(model.predict(X)[0])\n    return {\"prediction\": pred}",
+        "peekOfCode": "def predict_salary_level(item: Data):\n    item_dict = item.dict()\n    X = pd.DataFrame([[item_dict[column]\n                     for column in columns]], columns=columns)\n    X_categorical = X[categorical_features].values\n    X_continuous = X.drop(*[categorical_features], axis=1)\n    X_categorical = encoder.transform(X_categorical)\n    X = np.concatenate([X_continuous, X_categorical], axis=1)\n    pred = int(model.predict(X)[0])\n    return {\"prediction\": pred}",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -575,7 +551,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "columns = 'age,workclass,fnlgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country'.replace('-', '_').split(',')\ncategorical_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",",
+        "peekOfCode": "columns = 'age,workclass,fnlgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country'.replace(\n    '-', '_').split(',')\ncategorical_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -593,7 +569,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/model.pkl')\nencoder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)\nwith open(encoder_path, 'rb') as file:\n    encoder = pickle.load(file)\napp = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    workclass: str",
+        "peekOfCode": "model_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/lr_model.pkl')\nencoder_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -602,7 +578,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "encoder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)\nwith open(encoder_path, 'rb') as file:\n    encoder = pickle.load(file)\napp = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int",
+        "peekOfCode": "encoder_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)\nwith open(encoder_path, 'rb') as file:\n    encoder = pickle.load(file)\napp = FastAPI()  # initialize the application\nclass Data(BaseModel):",
         "detail": "starter.main",
         "documentation": {}
     },
