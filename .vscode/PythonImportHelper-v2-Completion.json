@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "LogisticRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
+        "isExtraImport": true,
+        "detail": "sklearn.linear_model",
+        "documentation": {}
+    },
+    {
         "label": "pickle",
         "kind": 6,
         "isExtraImport": true,
@@ -117,35 +125,11 @@
         "documentation": {}
     },
     {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
+        "label": "train_model",
+        "importPath": "ml.model",
+        "description": "ml.model",
         "isExtraImport": true,
-        "detail": "sklearn.model_selection",
-        "documentation": {}
-    },
-    {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
-        "isExtraImport": true,
-        "detail": "sklearn.model_selection",
-        "documentation": {}
-    },
-    {
-        "label": "load_data",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "process_data",
-        "importPath": "ml.data",
-        "description": "ml.data",
-        "isExtraImport": true,
-        "detail": "ml.data",
+        "detail": "ml.model",
         "documentation": {}
     },
     {
@@ -186,6 +170,30 @@
         "description": "ml.model",
         "isExtraImport": true,
         "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "process_data",
+        "importPath": "ml.data",
+        "description": "ml.data",
+        "isExtraImport": true,
+        "detail": "ml.data",
         "documentation": {}
     },
     {
@@ -418,29 +426,20 @@
         "documentation": {}
     },
     {
-        "label": "root",
+        "label": "test_train_model",
         "kind": 2,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "def root(): # root directory\n    return os.getcwd()\n# @pytest.fixture\n# def files(root):\n#     load_path = os.path.join(root, data_dir, \"census_cleaned.csv\")\n#     data = load_data(load_path)\n#     #data = pd.read_csv(\"../data/census.csv\")\n#     model = os.path.join(root, model_dir, \"lr_model.pkl\")\n#     with open(model, \"rb\") as f:\n#         model = pickle.load(f)",
+        "peekOfCode": "def test_train_model():\n    rf = train_model(np.array([[1.0, 2.0], [2.0, 3.0]]), np.array([[1], [0]]))\n    assert type(rf) == LogisticRegression\ndef test_inference_output_shape():\n    model = LogisticRegression()\n    model.fit(np.array([[1.0, 2.0], [2.0, 3.0]]), np.array([[1], [0]]))\n    assert len(model.predict(np.arange(4).reshape(2, 2))) == 2",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
     {
-        "label": "data_dir",
-        "kind": 5,
+        "label": "test_inference_output_shape",
+        "kind": 2,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "data_dir = \"starter/data/\"\nmodel_dir = \"starter/model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n# @pytest.fixture\n# def files(root):\n#     load_path = os.path.join(root, data_dir, \"census_cleaned.csv\")\n#     data = load_data(load_path)\n#     #data = pd.read_csv(\"../data/census.csv\")",
-        "detail": "starter.starter.test_model",
-        "documentation": {}
-    },
-    {
-        "label": "model_dir",
-        "kind": 5,
-        "importPath": "starter.starter.test_model",
-        "description": "starter.starter.test_model",
-        "peekOfCode": "model_dir = \"starter/model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n# @pytest.fixture\n# def files(root):\n#     load_path = os.path.join(root, data_dir, \"census_cleaned.csv\")\n#     data = load_data(load_path)\n#     #data = pd.read_csv(\"../data/census.csv\")\n#     model = os.path.join(root, model_dir, \"lr_model.pkl\")",
+        "peekOfCode": "def test_inference_output_shape():\n    model = LogisticRegression()\n    model.fit(np.array([[1.0, 2.0], [2.0, 3.0]]), np.array([[1], [0]]))\n    assert len(model.predict(np.arange(4).reshape(2, 2))) == 2",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
