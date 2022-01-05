@@ -29,7 +29,7 @@ categorical_features = [
     "sex",
     "native-country",
 ]
-model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/model.pkl')
+model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/lr_model.pkl')
 encoder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/encoder.pkl')
 
 with open(model_path, 'rb') as file:
