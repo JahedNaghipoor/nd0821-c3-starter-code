@@ -11,7 +11,7 @@ from .ml.model import compute_model_metrics, inference, train_model
 
 
 
-data_dir = "./data/"
+data_dir = "../data/"
 model_dir = "./model/"
 @pytest.fixture 
 def root(): # root directory
@@ -22,7 +22,7 @@ def files():
     
     # load_path = os.path.join(root, data_dir, "census_cleaned.csv")
     # data = load_data(load_path)
-    data = pd.read_csv("./data/census.csv")
+    data = pd.read_csv("../data/census.csv")
     
     model = os.path.join(model_dir, "lr_model.pkl")
     with open(model, "rb") as f:
@@ -60,6 +60,6 @@ def test_train_model(files, root):
     # X_train, y_train, encoder, lb = process_data(
     #     train, categorical_features=cat_features, label="salary", training=True
     # )
-    filepath = os.path.join(root, "./model/lr_model.pkl")
+    filepath = os.path.join(root, "../model/lr_model.pkl")
 
     assert os.path.exists(filepath)
