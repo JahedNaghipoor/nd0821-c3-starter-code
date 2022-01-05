@@ -2,3 +2,5 @@
     remote = localremote
 ['remote "localremote"']
     url = ../local
+['remote "driveremote"']
+    url = https://s3.console.aws.amazon.com/s3/buckets/udacity-mlops-c3?region=us-east-1&tab=objects
