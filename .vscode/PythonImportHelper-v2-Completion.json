@@ -205,6 +205,14 @@
         "documentation": {}
     },
     {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -524,7 +532,7 @@
         "kind": 6,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "class Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str\n    race: str",
+        "peekOfCode": "class Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int = Field(alias='education-num')\n    capital_gain: int = Field(alias='capital-gain')\n    capital_loss: int = Field(alias='capital-loss')\n    hours_per_week: int = Field(alias='hours-per-week')\n    workclass: str\n    education: str\n    marital_status: str = Field(alias='marital-status')",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -587,7 +595,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "app = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str",
+        "peekOfCode": "app = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int = Field(alias='education-num')\n    capital_gain: int = Field(alias='capital-gain')\n    capital_loss: int = Field(alias='capital-loss')\n    hours_per_week: int = Field(alias='hours-per-week')\n    workclass: str\n    education: str",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -650,7 +658,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "request = requests.post(PREDICT_URI, json=sample)\nassert request.status_code == 200\nassert request.json() == {\"prediction\": 1}\ndictionary = {\n    'Request body': sample,\n    'Status code': request.status_code,\n    'Response': request.json()\n}\nprint(json.dumps(dictionary, indent=4))",
+        "peekOfCode": "request = requests.post(PREDICT_URI, json=sample)\ndictionary = {\n    'Request body': sample,\n    'Status code': request.status_code,\n    'Response': request.json()\n}\nprint(json.dumps(dictionary, indent=4))",
         "detail": "api",
         "documentation": {}
     },

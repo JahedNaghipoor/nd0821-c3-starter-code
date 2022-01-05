@@ -4,7 +4,8 @@ This code is used to test the API.
 import os
 import pickle
 from fastapi import FastAPI
-from pydantic import BaseModel  # pydantic is a python data validation library
+# pydantic is a python data validation library
+from pydantic import BaseModel, Field
 import pandas as pd
 import numpy as np
 
@@ -46,19 +47,19 @@ app = FastAPI()  # initialize the application
 
 class Data(BaseModel):
     age: int
-    workclass: str
     fnlgt: int
+    education_num: int = Field(alias='education-num')
+    capital_gain: int = Field(alias='capital-gain')
+    capital_loss: int = Field(alias='capital-loss')
+    hours_per_week: int = Field(alias='hours-per-week')
+    workclass: str
     education: str
-    education_num: int
-    marital_status: str
+    marital_status: str = Field(alias='marital-status')
     occupation: str
     relationship: str
     race: str
     sex: str
-    capital_gain: int
-    capital_loss: int
-    hours_per_week: int
-    native_country: str
+    native_country: str = Field(alias='native-country')
 
 
 @app.get("/")  # greetings route

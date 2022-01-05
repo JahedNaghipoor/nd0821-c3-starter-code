@@ -3,6 +3,7 @@ This file contains the API for the application.
 Author: Jahed Naghipoor
 Date: December 2021
 Pylint score: 10/10
+autopep8: autopep8 --in-place --aggressive --aggressive app.py
 """
 import json
 import requests
@@ -26,10 +27,6 @@ sample = {
     'native-country': 'United-States'}
 
 request = requests.post(PREDICT_URI, json=sample)
-
-
-assert request.status_code == 200
-assert request.json() == {"prediction": 1}
 
 dictionary = {
     'Request body': sample,
