@@ -11,8 +11,8 @@ from .ml.model import compute_model_metrics, inference, train_model
 
 
 
-data_dir = "data/"
-model_dir = "model/"
+data_dir = "./starter/data/"
+model_dir = "./starter/model/"
 @pytest.fixture 
 def root(): # root directory
     return os.getcwd()
@@ -20,7 +20,7 @@ def root(): # root directory
 @pytest.fixture
 def files(root):
     
-    load_path = os.path.join(root, "/starter/data/census_cleaned.csv")
+    load_path = os.path.join(root, data_dir, "census_cleaned.csv")
     data = load_data(load_path)
     #data = pd.read_csv("../data/census.csv")
     
