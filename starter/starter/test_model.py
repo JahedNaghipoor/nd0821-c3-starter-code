@@ -18,21 +18,21 @@ def root(): # root directory
     return os.getcwd()
 
 @pytest.fixture
-def files():
+def files(root):
     
-    # load_path = os.path.join(root, data_dir, "census_cleaned.csv")
-    # data = load_data(load_path)
-    data = pd.read_csv("../data/census.csv")
+    load_path = os.path.join(root, data_dir, "census_cleaned.csv")
+    data = load_data(load_path)
+    #data = pd.read_csv("../data/census.csv")
     
-    model = os.path.join(model_dir, "lr_model.pkl")
+    model = os.path.join(root, model_dir, "lr_model.pkl")
     with open(model, "rb") as f:
         model = pickle.load(f)
 
-    encoder = os.path.join(model_dir, "encoder.pkl")
+    encoder = os.path.join(root, model_dir, "encoder.pkl")
     with open(encoder, "rb") as f:
         encoder = pickle.load(f)
 
-    lb = os.path.join(model_dir, "lb.pkl")
+    lb = os.path.join(root, model_dir, "lb.pkl")
     with open(lb, "rb") as f:
         lb = pickle.load(f)
 
