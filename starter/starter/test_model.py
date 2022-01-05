@@ -11,8 +11,8 @@ from .ml.model import compute_model_metrics, inference, train_model
 
 
 
-data_dir = "../data/"
-model_dir = "./model/"
+data_dir = "data/"
+model_dir = "model/"
 @pytest.fixture 
 def root(): # root directory
     return os.getcwd()
