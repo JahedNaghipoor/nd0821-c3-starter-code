@@ -18,10 +18,10 @@ jobs:
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 3.8.10
     - name: Install dependencies
       run: |
-        python -m pip install flake8 pytest requests scikit-learn pandas numpy fastapi pytest
+        python -m pip install flake8 pytest requests scikit-learn pandas numpy fastapi pytest python==3.8.10
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -33,6 +33,6 @@ jobs:
     # - name: run dvc pull
     #   run: |
     #     dvc pull        
-    - name: Test with pytest
-      run: |
-        pytest
+    # - name: Test with pytest
+    #   run: |
+    #     pytest

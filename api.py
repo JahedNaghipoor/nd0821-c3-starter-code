@@ -1,7 +1,13 @@
-import requests
+"""
+This file contains the API for the application.
+Author: Jahed Naghipoor
+Date: December 2021
+Pylint score: 10/10
+"""
 import json
+import requests
 
-predict_uri = "https://udacity-mlops-nanodegree-app.herokuapp.com/predict"
+PREDICT_URI = "https://udacity-mlops-nanodegree-app.herokuapp.com/predict"
 
 sample = {
     'age': 42,
@@ -19,16 +25,15 @@ sample = {
     'hours-per-week': 40,
     'native-country': 'United-States'}
 
-request = requests.post(predict_uri, json=sample)
+request = requests.post(PREDICT_URI, json=sample)
 
 
 assert request.status_code == 200
 assert request.json() == {"prediction": 1}
 
-dict = {
-    'Request body':sample,
+dictionary = {
+    'Request body': sample,
     'Status code': request.status_code,
-    'Response': request.json()   
+    'Response': request.json()
 }
-print(json.dumps(dict, indent=4))
-
+print(json.dumps(dictionary, indent=4))
