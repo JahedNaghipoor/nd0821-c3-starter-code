@@ -189,14 +189,6 @@
         "documentation": {}
     },
     {
-        "label": "save_model",
-        "importPath": "ml.model",
-        "description": "ml.model",
-        "isExtraImport": true,
-        "detail": "ml.model",
-        "documentation": {}
-    },
-    {
         "label": "train_model",
         "importPath": "ml.model",
         "description": "ml.model",
@@ -213,7 +205,23 @@
         "documentation": {}
     },
     {
+        "label": "evaluate_model_on_column_slices",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
         "label": "inference",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "save_model",
         "importPath": "ml.model",
         "description": "ml.model",
         "isExtraImport": true,
@@ -378,6 +386,15 @@
         "documentation": {}
     },
     {
+        "label": "evaluate_model_on_column_slices",
+        "kind": 2,
+        "importPath": "starter.starter.ml.model",
+        "description": "starter.starter.ml.model",
+        "peekOfCode": "def evaluate_model_on_column_slices(df, column, y, predictions):\n    \"\"\"\n    Validates the trained machine learning model on column slices\n    using precision, recall, and F1.\n    Inputs\n    ------\n    df: pd.DataFrame\n        Test dataset used for creating predictions\n    column: str\n        Column name to create slices on",
+        "detail": "starter.starter.ml.model",
+        "documentation": {}
+    },
+    {
         "label": "RANDOM_STATE",
         "kind": 5,
         "importPath": "starter.starter.ml.model",
@@ -535,7 +552,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_dir = \"../model\"  # the directory where the model will be stored.\nmodel_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, 'model.pkl')\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
+        "peekOfCode": "model_dir = \"../model/\"  # the directory where the model will be stored.\nsave_model(encoder, os.path.join(model_dir, \"encoder.pkl\")) # save the label encoder\nsave_model(lb, os.path.join(model_dir, \"lb.pkl\")) # save the encoder\nmodel_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train, model_path)  # train the model",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -544,7 +561,16 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_path = os.path.join(model_dir + \"/gbc_model.pkl\") # path to the model\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, 'model.pkl')\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
+        "peekOfCode": "model_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "slice_output",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "slice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -553,7 +579,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "classifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, 'model.pkl')\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
+        "peekOfCode": "classifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data\nslice_metrics = evaluate_model_on_column_slices(test, 'education', y_test, y_test_predict)\nmetric_df = pd.DataFrame(slice_metrics, columns=['education_slice', 'precision', 'recall', 'f1'])",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -562,7 +588,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "y_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
+        "peekOfCode": "y_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data\nslice_metrics = evaluate_model_on_column_slices(test, 'education', y_test, y_test_predict)\nmetric_df = pd.DataFrame(slice_metrics, columns=['education_slice', 'precision', 'recall', 'f1'])\nmetric_df.to_csv('../model/slice_output.txt', index=False)",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -571,7 +597,25 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "y_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data",
+        "peekOfCode": "y_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data\nslice_metrics = evaluate_model_on_column_slices(test, 'education', y_test, y_test_predict)\nmetric_df = pd.DataFrame(slice_metrics, columns=['education_slice', 'precision', 'recall', 'f1'])\nmetric_df.to_csv('../model/slice_output.txt', index=False)",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "slice_metrics",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "slice_metrics = evaluate_model_on_column_slices(test, 'education', y_test, y_test_predict)\nmetric_df = pd.DataFrame(slice_metrics, columns=['education_slice', 'precision', 'recall', 'f1'])\nmetric_df.to_csv('../model/slice_output.txt', index=False)",
+        "detail": "starter.starter.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "metric_df",
+        "kind": 5,
+        "importPath": "starter.starter.train_model",
+        "description": "starter.starter.train_model",
+        "peekOfCode": "metric_df = pd.DataFrame(slice_metrics, columns=['education_slice', 'precision', 'recall', 'f1'])\nmetric_df.to_csv('../model/slice_output.txt', index=False)",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },

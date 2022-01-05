@@ -87,3 +87,32 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X) # Return the predictions
+
+def evaluate_model_on_column_slices(df, column, y, predictions):
+    """
+    Validates the trained machine learning model on column slices
+    using precision, recall, and F1.
+    Inputs
+    ------
+    df: pd.DataFrame
+        Test dataset used for creating predictions
+    column: str
+        Column name to create slices on
+    y : np.array
+        Known labels, binarized.
+    predictions : np.array
+        Predicted labels, binarized.
+    Returns
+    -------
+    predictions : list
+        Prediction on column slices
+        (Precision, recall, fbeta)
+    """
+    slices = df[column].unique()
+    slice_metrics = []
+    for slice in slices:
+        fill = df[column] == slice
+        slice_metrics.append(
+            (slice,) + compute_model_metrics(y[fill], predictions[fill])
+        )
+    return slice_metrics
