@@ -8,7 +8,7 @@ autopep8: autopep8 --in-place --aggressive --aggressive app.py
 import json
 import requests
 
-PREDICT_URI = "https://udacity-mlops-nanodegree-app.herokuapp.com/predict"
+PREDICT_URI = "https://udacity-mlops-nanodegree-app.herokuapp.com/predict/"
 
 sample = {
     'age': 42,
@@ -26,7 +26,7 @@ sample = {
     'hours-per-week': 40,
     'native-country': 'United-States'}
 
-request = requests.post(PREDICT_URI, json=sample)
+request = requests.post(PREDICT_URI, data=json.dumps(sample))
 
 dictionary = {
     'Request body': sample,

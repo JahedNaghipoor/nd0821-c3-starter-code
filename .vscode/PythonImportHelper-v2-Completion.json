@@ -532,7 +532,7 @@
         "kind": 6,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "class Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int = Field(alias='education-num')\n    capital_gain: int = Field(alias='capital-gain')\n    capital_loss: int = Field(alias='capital-loss')\n    hours_per_week: int = Field(alias='hours-per-week')\n    workclass: str\n    education: str\n    marital_status: str = Field(alias='marital-status')",
+        "peekOfCode": "class Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int \n    capital_gain: int \n    capital_loss: int \n    hours_per_week: int \n    workclass: str\n    education: str\n    marital_status: str ",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -541,7 +541,7 @@
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return \"Greetings!!!\"\n@app.post(\"/predict\")\ndef predict_salary_level(item: Data):\n    item_dict = item.dict()",
+        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return \"Greetings!!!\"\n@app.post(\"/predict/\")  # predict route\ndef predict_salary_level(item: Data):\n    item_dict = item.dict()",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -595,7 +595,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "app = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int = Field(alias='education-num')\n    capital_gain: int = Field(alias='capital-gain')\n    capital_loss: int = Field(alias='capital-loss')\n    hours_per_week: int = Field(alias='hours-per-week')\n    workclass: str\n    education: str",
+        "peekOfCode": "app = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int \n    capital_gain: int \n    capital_loss: int \n    hours_per_week: int \n    workclass: str\n    education: str",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -640,7 +640,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict\"\nsample = {\n    'age': 42,\n    'workclass': 'Private',\n    'fnlgt': 159449,\n    'education': 'Bachelors',\n    'education-num': 13,\n    'marital-status': 'Married-civ-spouse',\n    'occupation': 'Exec-managerial',\n    'relationship': 'Husband',",
+        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict/\"\nsample = {\n    'age': 42,\n    'workclass': 'Private',\n    'fnlgt': 159449,\n    'education': 'Bachelors',\n    'education-num': 13,\n    'marital-status': 'Married-civ-spouse',\n    'occupation': 'Exec-managerial',\n    'relationship': 'Husband',",
         "detail": "api",
         "documentation": {}
     },
@@ -658,7 +658,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "request = requests.post(PREDICT_URI, json=sample)\ndictionary = {\n    'Request body': sample,\n    'Status code': request.status_code,\n    'Response': request.json()\n}\nprint(json.dumps(dictionary, indent=4))",
+        "peekOfCode": "request = requests.post(PREDICT_URI, data=json.dumps(sample))\ndictionary = {\n    'Request body': sample,\n    'Status code': request.status_code,\n    'Response': request.json()\n}\nprint(json.dumps(dictionary, indent=4))",
         "detail": "api",
         "documentation": {}
     },

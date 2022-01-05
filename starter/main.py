@@ -48,18 +48,18 @@ app = FastAPI()  # initialize the application
 class Data(BaseModel):
     age: int
     fnlgt: int
-    education_num: int = Field(alias='education-num')
-    capital_gain: int = Field(alias='capital-gain')
-    capital_loss: int = Field(alias='capital-loss')
-    hours_per_week: int = Field(alias='hours-per-week')
+    education_num: int 
+    capital_gain: int 
+    capital_loss: int 
+    hours_per_week: int 
     workclass: str
     education: str
-    marital_status: str = Field(alias='marital-status')
+    marital_status: str 
     occupation: str
     relationship: str
     race: str
     sex: str
-    native_country: str = Field(alias='native-country')
+    native_country: str
 
 
 @app.get("/")  # greetings route
@@ -73,7 +73,7 @@ def greetings():
     return "Greetings!!!"
 
 
-@app.post("/predict")
+@app.post("/predict/")  # predict route
 def predict_salary_level(item: Data):
     item_dict = item.dict()
     X = pd.DataFrame([[item_dict[column]
@@ -87,5 +87,4 @@ def predict_salary_level(item: Data):
     X = np.concatenate([X_continuous, X_categorical], axis=1)
 
     pred = int(model.predict(X)[0])
-
     return {"prediction": pred}
