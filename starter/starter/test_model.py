@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-from ml.model import train_model
+from .ml.model import train_model
 
 def test_train_model():
     
