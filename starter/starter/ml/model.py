@@ -32,7 +32,7 @@ def load_model(file):
     return model
 
 # Optional: implement hyperparameter tuning.
-def train_model(X_train, y_train, path):
+def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
 

@@ -54,7 +54,7 @@ def greetings():
     Returns:
         string: a greetings message
     """
-    return {"Greetings!!!"}
+    return "Greetings!!!"
 
 
 @app.post("/inference/")  # greetings route

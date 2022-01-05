@@ -66,28 +66,12 @@
         "documentation": {}
     },
     {
-        "label": "pytest",
+        "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "pytest",
-        "description": "pytest",
-        "detail": "pytest",
-        "documentation": {}
-    },
-    {
-        "label": "TestClient",
-        "importPath": "fastapi.testclient",
-        "description": "fastapi.testclient",
-        "isExtraImport": true,
-        "detail": "fastapi.testclient",
-        "documentation": {}
-    },
-    {
-        "label": "app",
-        "importPath": "starter.main",
-        "description": "starter.main",
-        "isExtraImport": true,
-        "detail": "starter.main",
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
         "documentation": {}
     },
     {
@@ -108,12 +92,28 @@
         "documentation": {}
     },
     {
-        "label": "pandas",
+        "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
+        "isExtraImport": true,
+        "detail": "fastapi.testclient",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
         "documentation": {}
     },
     {
@@ -130,14 +130,6 @@
         "description": "sklearn.model_selection",
         "isExtraImport": true,
         "detail": "sklearn.model_selection",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
         "documentation": {}
     },
     {
@@ -154,38 +146,6 @@
         "description": "ml.data",
         "isExtraImport": true,
         "detail": "ml.data",
-        "documentation": {}
-    },
-    {
-        "label": "process_data",
-        "importPath": "ml.data",
-        "description": "ml.data",
-        "isExtraImport": true,
-        "detail": "ml.data",
-        "documentation": {}
-    },
-    {
-        "label": "compute_model_metrics",
-        "importPath": "ml.model",
-        "description": "ml.model",
-        "isExtraImport": true,
-        "detail": "ml.model",
-        "documentation": {}
-    },
-    {
-        "label": "inference",
-        "importPath": "ml.model",
-        "description": "ml.model",
-        "isExtraImport": true,
-        "detail": "ml.model",
-        "documentation": {}
-    },
-    {
-        "label": "train_model",
-        "importPath": "ml.model",
-        "description": "ml.model",
-        "isExtraImport": true,
-        "detail": "ml.model",
         "documentation": {}
     },
     {
@@ -363,7 +323,7 @@
         "kind": 2,
         "importPath": "starter.starter.ml.model",
         "description": "starter.starter.ml.model",
-        "peekOfCode": "def train_model(X_train, y_train, path):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array\n        Labels.\n    Returns",
+        "peekOfCode": "def train_model(X_train, y_train):\n    \"\"\"\n    Trains a machine learning model and returns it.\n    Inputs\n    ------\n    X_train : np.array\n        Training data.\n    y_train : np.array\n        Labels.\n    Returns",
         "detail": "starter.starter.ml.model",
         "documentation": {}
     },
@@ -404,87 +364,6 @@
         "documentation": {}
     },
     {
-        "label": "test_main_route_OK",
-        "kind": 2,
-        "importPath": "starter.starter.tests.test_api",
-        "description": "starter.starter.tests.test_api",
-        "peekOfCode": "def test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
-        "detail": "starter.starter.tests.test_api",
-        "documentation": {}
-    },
-    {
-        "label": "test_main_route_message",
-        "kind": 2,
-        "importPath": "starter.starter.tests.test_api",
-        "description": "starter.starter.tests.test_api",
-        "peekOfCode": "def test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
-        "detail": "starter.starter.tests.test_api",
-        "documentation": {}
-    },
-    {
-        "label": "client",
-        "kind": 5,
-        "importPath": "starter.starter.tests.test_api",
-        "description": "starter.starter.tests.test_api",
-        "peekOfCode": "client = TestClient(app)\ndef test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
-        "detail": "starter.starter.tests.test_api",
-        "documentation": {}
-    },
-    {
-        "label": "root",
-        "kind": 2,
-        "importPath": "starter.starter.tests.test_model",
-        "description": "starter.starter.tests.test_model",
-        "peekOfCode": "def root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)\n    encoder = os.path.join(root,model_dir, \"encoder.pkl\")",
-        "detail": "starter.starter.tests.test_model",
-        "documentation": {}
-    },
-    {
-        "label": "files",
-        "kind": 2,
-        "importPath": "starter.starter.tests.test_model",
-        "description": "starter.starter.tests.test_model",
-        "peekOfCode": "def files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)\n    encoder = os.path.join(root,model_dir, \"encoder.pkl\")\n    with open(encoder, \"rb\") as f:\n        encoder = pickle.load(f)\n    lb = os.path.join(root, model_dir, \"lb.pkl\")",
-        "detail": "starter.starter.tests.test_model",
-        "documentation": {}
-    },
-    {
-        "label": "train_test_data",
-        "kind": 2,
-        "importPath": "starter.starter.tests.test_model",
-        "description": "starter.starter.tests.test_model",
-        "peekOfCode": "def train_test_data(files):\n    data, _, _, _ = files\n    train, test = train_test_split(data, test_size=0.20, random_state=42)\n    return train, test\ndef test_train_model(files, root):\n    data, model, encoder, lb = files\n    train, test = train_test_split(data, test_size=0.20, random_state=42)\n    cat_features = [\n        \"workclass\",\n        \"education\",",
-        "detail": "starter.starter.tests.test_model",
-        "documentation": {}
-    },
-    {
-        "label": "test_train_model",
-        "kind": 2,
-        "importPath": "starter.starter.tests.test_model",
-        "description": "starter.starter.tests.test_model",
-        "peekOfCode": "def test_train_model(files, root):\n    data, model, encoder, lb = files\n    train, test = train_test_split(data, test_size=0.20, random_state=42)\n    cat_features = [\n        \"workclass\",\n        \"education\",\n        \"marital-status\",\n        \"occupation\",\n        \"relationship\",\n        \"race\",",
-        "detail": "starter.starter.tests.test_model",
-        "documentation": {}
-    },
-    {
-        "label": "data_dir",
-        "kind": 5,
-        "importPath": "starter.starter.tests.test_model",
-        "description": "starter.starter.tests.test_model",
-        "peekOfCode": "data_dir = \"../data/\"\nmodel_dir = \"../model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")",
-        "detail": "starter.starter.tests.test_model",
-        "documentation": {}
-    },
-    {
-        "label": "model_dir",
-        "kind": 5,
-        "importPath": "starter.starter.tests.test_model",
-        "description": "starter.starter.tests.test_model",
-        "peekOfCode": "model_dir = \"../model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files(root):\n    load_path = os.path.join(root, data_dir, \"census.csv\")\n    data = load_data(load_path)\n    model = os.path.join(root, model_dir, \"gbclassifier.pkl\")\n    with open(model, \"rb\") as f:",
-        "detail": "starter.starter.tests.test_model",
-        "documentation": {}
-    },
-    {
         "label": "clean_data",
         "kind": 2,
         "importPath": "starter.starter.data",
@@ -509,6 +388,87 @@
         "description": "starter.starter.data",
         "peekOfCode": "def save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":\n    dir = \"../data/\"\n    load_path = os.path.join(dir, \"census.csv\")\n    df = load_data(load_path)\n    clean_df = clean_data(df)\n    save_path = os.path.join(dir, \"census_clean.csv\")\n    save_data(clean_df, save_path)",
         "detail": "starter.starter.data",
+        "documentation": {}
+    },
+    {
+        "label": "test_main_route_OK",
+        "kind": 2,
+        "importPath": "starter.starter.test_api",
+        "description": "starter.starter.test_api",
+        "peekOfCode": "def test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "detail": "starter.starter.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_main_route_message",
+        "kind": 2,
+        "importPath": "starter.starter.test_api",
+        "description": "starter.starter.test_api",
+        "peekOfCode": "def test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "detail": "starter.starter.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "starter.starter.test_api",
+        "description": "starter.starter.test_api",
+        "peekOfCode": "client = TestClient(app)\ndef test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "detail": "starter.starter.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 2,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "def root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files():\n    # load_path = os.path.join(root, data_dir, \"census_cleaned.csv\")\n    # data = load_data(load_path)\n    data = pd.read_csv(\"./data/census.csv\")\n    model = os.path.join(model_dir, \"lr_model.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)",
+        "detail": "starter.starter.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "files",
+        "kind": 2,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "def files():\n    # load_path = os.path.join(root, data_dir, \"census_cleaned.csv\")\n    # data = load_data(load_path)\n    data = pd.read_csv(\"./data/census.csv\")\n    model = os.path.join(model_dir, \"lr_model.pkl\")\n    with open(model, \"rb\") as f:\n        model = pickle.load(f)\n    encoder = os.path.join(model_dir, \"encoder.pkl\")\n    with open(encoder, \"rb\") as f:\n        encoder = pickle.load(f)",
+        "detail": "starter.starter.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_data",
+        "kind": 2,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "def train_test_data(files):\n    data, model, encoder, lb = files\n    train, test = train_test_split(data, test_size=0.20, random_state=42)\n    return train, test\ndef test_train_model(files, root):\n    data, model, encoder, lb = files\n    train, test = train_test_split(data, test_size=0.20)\n    cat_features = [\n        \"workclass\",\n        \"education\",",
+        "detail": "starter.starter.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "test_train_model",
+        "kind": 2,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "def test_train_model(files, root):\n    data, model, encoder, lb = files\n    train, test = train_test_split(data, test_size=0.20)\n    cat_features = [\n        \"workclass\",\n        \"education\",\n        \"marital-status\",\n        \"occupation\",\n        \"relationship\",\n        \"race\",",
+        "detail": "starter.starter.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "data_dir",
+        "kind": 5,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "data_dir = \"./data/\"\nmodel_dir = \"./model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files():\n    # load_path = os.path.join(root, data_dir, \"census_cleaned.csv\")\n    # data = load_data(load_path)\n    data = pd.read_csv(\"./data/census.csv\")",
+        "detail": "starter.starter.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "model_dir",
+        "kind": 5,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "model_dir = \"./model/\"\n@pytest.fixture \ndef root(): # root directory\n    return os.getcwd()\n@pytest.fixture\ndef files():\n    # load_path = os.path.join(root, data_dir, \"census_cleaned.csv\")\n    # data = load_data(load_path)\n    data = pd.read_csv(\"./data/census.csv\")\n    model = os.path.join(model_dir, \"lr_model.pkl\")",
+        "detail": "starter.starter.test_model",
         "documentation": {}
     },
     {
@@ -552,7 +512,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_dir = \"../model/\"  # the directory where the model will be stored.\nsave_model(encoder, os.path.join(model_dir, \"encoder.pkl\")) # save the label encoder\nsave_model(lb, os.path.join(model_dir, \"lb.pkl\")) # save the encoder\nmodel_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train, model_path)  # train the model",
+        "peekOfCode": "model_dir = \"../model/\"  # the directory where the model will be stored.\nsave_model(encoder, os.path.join(model_dir, \"encoder.pkl\")) # save the label encoder\nsave_model(lb, os.path.join(model_dir, \"lb.pkl\")) # save the encoder\nmodel_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -561,7 +521,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data",
+        "peekOfCode": "model_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -570,7 +530,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "slice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data",
+        "peekOfCode": "slice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -579,7 +539,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "classifier = train_model(X_train, y_train, model_path)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data\nslice_metrics = evaluate_model_on_column_slices(test, 'education', y_test, y_test_predict)\nmetric_df = pd.DataFrame(slice_metrics, columns=['education_slice', 'precision', 'recall', 'f1'])",
+        "peekOfCode": "classifier = train_model(X_train, y_train)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data\ny_test_predict = inference(classifier, X_test)  # make predictions on the test data\ntest_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_test_predict) # compute the metrics for the test data\nprint(f\"test_precision: {test_precision}, test_recall: {test_recall}, test_fbeta: {test_fbeta}\")    # print the metrics for the test data\nslice_metrics = evaluate_model_on_column_slices(test, 'education', y_test, y_test_predict)\nmetric_df = pd.DataFrame(slice_metrics, columns=['education_slice', 'precision', 'recall', 'f1'])",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -633,7 +593,7 @@
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return {\"Greetings!!!\"}\n@app.post(\"/inference/\")  # greetings route\ndef inference_route(data: Data):\n    \"\"\"",
+        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return \"Greetings!!!\"\n@app.post(\"/inference/\")  # greetings route\ndef inference_route(data: Data):\n    \"\"\"",
         "detail": "starter.main",
         "documentation": {}
     },

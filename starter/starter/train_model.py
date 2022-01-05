@@ -45,7 +45,7 @@ X_test, y_test, encoder, lb = process_data(
 
 # Train and save a model.
 
-classifier = train_model(X_train, y_train, model_path)  # train the model
+classifier = train_model(X_train, y_train)  # train the model
 save_model(classifier, model_path)
 
 y_train_predict = inference(classifier, X_train)    # make predictions on the training data
