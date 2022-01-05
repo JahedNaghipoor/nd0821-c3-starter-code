@@ -11,26 +11,27 @@ import requests
 PREDICT_URI = "https://udacity-mlops-nanodegree-app.herokuapp.com/predict/"
 
 sample = {
-    'age': 42,
-    'workclass': 'Private',
-    'fnlgt': 159449,
-    'education': 'Bachelors',
-    'education-num': 13,
-    'marital-status': 'Married-civ-spouse',
-    'occupation': 'Exec-managerial',
-    'relationship': 'Husband',
-    'race': 'White',
-    'sex': 'Male',
-    'capital-gain': 5178,
-    'capital-loss': 0,
-    'hours-per-week': 40,
-    'native-country': 'United-States'}
+    "age": 42,
+    "fnlgt": 159449,
+    "education-num": 13,
+    "capital-gain": 5178,
+    "capital-loss": 0,
+    "hours-per-week": 40,
+    "workclass": "Private",
+    "education": "Bachelors",
+    "marital-status": "Married-civ-spouse",
+    "occupation": "Exec-managerial",
+    "relationship": "Husband",
+    "race": "White",
+    "sex": "Male",
+    "native-country": "United-States"
+}
 
-request = requests.post(PREDICT_URI, data=json.dumps(sample))
+response = requests.post(PREDICT_URI, data=json.dumps(sample))
 
 dictionary = {
-    'Request body': sample,
-    'Status code': request.status_code,
-    'Response': request.json()
+    'Request body': json.dumps(sample),
+    'Status code': response.status_code,
+    'Response': response.json()
 }
 print(json.dumps(dictionary, indent=4))

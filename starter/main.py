@@ -62,8 +62,9 @@ class Data(BaseModel):
     native_country: str
 
 
+
 @app.get("/")  # greetings route
-def greetings():
+async def greetings():
     """
     greetings route
 
@@ -73,7 +74,7 @@ def greetings():
     return "Greetings!!!"
 
 
-@app.post("/predict/")  # predict route
+@app.post("/predict")  # predict route
 def predict_salary_level(item: Data):
     item_dict = item.dict()
     X = pd.DataFrame([[item_dict[column]

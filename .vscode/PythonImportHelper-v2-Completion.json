@@ -537,15 +537,6 @@
         "documentation": {}
     },
     {
-        "label": "greetings",
-        "kind": 2,
-        "importPath": "starter.main",
-        "description": "starter.main",
-        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return \"Greetings!!!\"\n@app.post(\"/predict/\")  # predict route\ndef predict_salary_level(item: Data):\n    item_dict = item.dict()",
-        "detail": "starter.main",
-        "documentation": {}
-    },
-    {
         "label": "predict_salary_level",
         "kind": 2,
         "importPath": "starter.main",
@@ -640,7 +631,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict/\"\nsample = {\n    'age': 42,\n    'workclass': 'Private',\n    'fnlgt': 159449,\n    'education': 'Bachelors',\n    'education-num': 13,\n    'marital-status': 'Married-civ-spouse',\n    'occupation': 'Exec-managerial',\n    'relationship': 'Husband',",
+        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict/\"\nsample = {\n    \"age\": 42,\n    \"fnlgt\": 159449,\n    \"education-num\": 13,\n    \"capital-gain\": 5178,\n    \"capital-loss\": 0,\n    \"hours-per-week\": 40,\n    \"workclass\": \"Private\",\n    \"education\": \"Bachelors\",",
         "detail": "api",
         "documentation": {}
     },
@@ -649,16 +640,16 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "sample = {\n    'age': 42,\n    'workclass': 'Private',\n    'fnlgt': 159449,\n    'education': 'Bachelors',\n    'education-num': 13,\n    'marital-status': 'Married-civ-spouse',\n    'occupation': 'Exec-managerial',\n    'relationship': 'Husband',\n    'race': 'White',",
+        "peekOfCode": "sample = {\n    \"age\": 42,\n    \"fnlgt\": 159449,\n    \"education-num\": 13,\n    \"capital-gain\": 5178,\n    \"capital-loss\": 0,\n    \"hours-per-week\": 40,\n    \"workclass\": \"Private\",\n    \"education\": \"Bachelors\",\n    \"marital-status\": \"Married-civ-spouse\",",
         "detail": "api",
         "documentation": {}
     },
     {
-        "label": "request",
+        "label": "response",
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "request = requests.post(PREDICT_URI, data=json.dumps(sample))\ndictionary = {\n    'Request body': sample,\n    'Status code': request.status_code,\n    'Response': request.json()\n}\nprint(json.dumps(dictionary, indent=4))",
+        "peekOfCode": "response = requests.post(PREDICT_URI, data=json.dumps(sample))\ndictionary = {\n    'Request body': json.dumps(sample),\n    'Status code': response.status_code,\n    'Response': response.json()\n}\nprint(json.dumps(dictionary, indent=4))",
         "detail": "api",
         "documentation": {}
     },
@@ -667,7 +658,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "dictionary = {\n    'Request body': sample,\n    'Status code': request.status_code,\n    'Response': request.json()\n}\nprint(json.dumps(dictionary, indent=4))",
+        "peekOfCode": "dictionary = {\n    'Request body': json.dumps(sample),\n    'Status code': response.status_code,\n    'Response': response.json()\n}\nprint(json.dumps(dictionary, indent=4))",
         "detail": "api",
         "documentation": {}
     }
