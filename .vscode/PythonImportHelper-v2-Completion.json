@@ -557,16 +557,25 @@
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return \"Greetings!!!\"\n@app.post(\"/inference/\")  # greetings route\ndef inference_route(data: Data):\n    \"\"\"",
+        "peekOfCode": "def greetings():\n    \"\"\"\n    greetings route\n    Returns:\n        string: a greetings message\n    \"\"\"\n    return \"Greetings!!!\"\n@app.post(\"/predict\")\ndef predict_salary_level(item: Data):\n    item_dict = item.dict()",
         "detail": "starter.main",
         "documentation": {}
     },
     {
-        "label": "inference_route",
+        "label": "predict_salary_level",
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def inference_route(data: Data):\n    \"\"\"\n    inference_route [summary]\n    [extended_summary]\n    Args:\n        data (Data):  base model for data\n    Returns:\n        float: prediction\n    \"\"\"\n    dictionary = {",
+        "peekOfCode": "def predict_salary_level(item: Data):\n    item_dict = item.dict()\n    X = pd.DataFrame([[item_dict[column] for column in columns]], columns=columns)\n    X_categorical = X[categorical_features].values\n    X_continuous = X.drop(*[categorical_features], axis=1)\n    X_categorical = encoder.transform(X_categorical)\n    X = np.concatenate([X_continuous, X_categorical], axis=1)\n    pred = int(model.predict(X)[0])\n    return {\"prediction\": pred}",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "columns",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "columns = 'age,workclass,fnlgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country'.replace('-', '_').split(',')\ncategorical_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -576,6 +585,24 @@
         "importPath": "starter.main",
         "description": "starter.main",
         "peekOfCode": "categorical_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",\n]",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "model_path",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/model.pkl')\nencoder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)\nwith open(encoder_path, 'rb') as file:\n    encoder = pickle.load(file)\napp = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    workclass: str",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "encoder_path",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "encoder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)\nwith open(encoder_path, 'rb') as file:\n    encoder = pickle.load(file)\napp = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int",
         "detail": "starter.main",
         "documentation": {}
     },
