@@ -126,66 +126,26 @@
     },
     {
         "label": "train_model",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
+        "importPath": "ml.model",
+        "description": "ml.model",
         "isExtraImport": true,
-        "detail": "starter.ml.model",
+        "detail": "ml.model",
         "documentation": {}
     },
     {
         "label": "inference",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
+        "importPath": "ml.model",
+        "description": "ml.model",
         "isExtraImport": true,
-        "detail": "starter.ml.model",
+        "detail": "ml.model",
         "documentation": {}
     },
     {
         "label": "compute_model_metrics",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
+        "importPath": "ml.model",
+        "description": "ml.model",
         "isExtraImport": true,
-        "detail": "starter.ml.model",
-        "documentation": {}
-    },
-    {
-        "label": "inference",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
-        "isExtraImport": true,
-        "detail": "starter.ml.model",
-        "documentation": {}
-    },
-    {
-        "label": "load_model",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
-        "isExtraImport": true,
-        "detail": "starter.ml.model",
-        "documentation": {}
-    },
-    {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
-        "isExtraImport": true,
-        "detail": "sklearn.model_selection",
-        "documentation": {}
-    },
-    {
-        "label": "load_data",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "process_data",
-        "importPath": "ml.data",
-        "description": "ml.data",
-        "isExtraImport": true,
-        "detail": "ml.data",
+        "detail": "ml.model",
         "documentation": {}
     },
     {
@@ -229,6 +189,54 @@
         "documentation": {}
     },
     {
+        "label": "inference",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "process_data",
+        "importPath": "ml.data",
+        "description": "ml.data",
+        "isExtraImport": true,
+        "detail": "ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "process_data",
+        "importPath": "ml.data",
+        "description": "ml.data",
+        "isExtraImport": true,
+        "detail": "ml.data",
+        "documentation": {}
+    },
+    {
         "label": "Body",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -250,14 +258,6 @@
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "process_data",
-        "importPath": "starter.ml.data",
-        "description": "starter.ml.data",
-        "isExtraImport": true,
-        "detail": "starter.ml.data",
         "documentation": {}
     },
     {
@@ -445,7 +445,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_route():\n    \"\"\"\n    test_route tests the route /\n    \"\"\"\n    r = client.get(\"/\")\n    assert r.status_code == 200\n    assert r.json() == [\"Greetings!\"]\ndef test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /predict for the greater than 50K sample",
+        "peekOfCode": "def test_route():\n    \"\"\"\n    test_route tests the route /\n    \"\"\"\n    r = client.get(\"/\")\n    assert r.status_code == 200\n    assert r.json() == \"Greetings!!!\"\ndef test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /predict for the greater than 50K sample",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
@@ -643,7 +643,7 @@
         "kind": 2,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "def say_hello():\n    return {\"Greetings!\"}\n@app.post(\"/predict/\")\ndef create_item(data: Data = Body(None,\n                                        example={\n                                            \"age\": 39,\n                                            \"workclass\": \"State-gov\",\n                                            \"fnlgt\": 77516,\n                                            \"education\": \"Bachelors\",\n                                            \"education_num\": 13,",
+        "peekOfCode": "def say_hello():\n    return \"Greetings!!!\"\n@app.post(\"/predict/\")\ndef create_item(data: Data = Body(None,\n                                        example={\n                                            \"age\": 39,\n                                            \"workclass\": \"State-gov\",\n                                            \"fnlgt\": 77516,\n                                            \"education\": \"Bachelors\",\n                                            \"education_num\": 13,",
         "detail": "starter.main",
         "documentation": {}
     },

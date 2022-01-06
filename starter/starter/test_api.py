@@ -54,7 +54,7 @@ def test_route():
     """
     r = client.get("/")
     assert r.status_code == 200
-    assert r.json() == ["Greetings!"]
+    assert r.json() == "Greetings!!!"
 
 
 def test_post_greater_than_fifty(greater_than_fifty_sample):
