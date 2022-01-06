@@ -19,3 +19,4 @@ dictionary = {
     'Request body': json.dumps(sample),
     'Status code': response.status_code,
 }
+print(json.dumps(dictionary, indent=4))
