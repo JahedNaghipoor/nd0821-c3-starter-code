@@ -3,8 +3,8 @@ from pydantic import BaseModel
 import pandas as pd
 import os
 
-from ml.data import process_data
-from ml.model import inference, load_model
+from starter.ml.data import process_data
+from starter.ml.model import inference, load_model
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
