@@ -49,19 +49,19 @@
         "documentation": {}
     },
     {
-        "label": "LogisticRegression",
-        "importPath": "sklearn.linear_model",
-        "description": "sklearn.linear_model",
+        "label": "RandomForestClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
         "isExtraImport": true,
-        "detail": "sklearn.linear_model",
+        "detail": "sklearn.ensemble",
         "documentation": {}
     },
     {
-        "label": "LogisticRegression",
-        "importPath": "sklearn.linear_model",
-        "description": "sklearn.linear_model",
+        "label": "RandomForestClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
         "isExtraImport": true,
-        "detail": "sklearn.linear_model",
+        "detail": "sklearn.ensemble",
         "documentation": {}
     },
     {
@@ -189,6 +189,14 @@
         "documentation": {}
     },
     {
+        "label": "Body",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -205,11 +213,27 @@
         "documentation": {}
     },
     {
-        "label": "Field",
-        "importPath": "pydantic",
-        "description": "pydantic",
+        "label": "process_data",
+        "importPath": "starter.ml.data",
+        "description": "starter.ml.data",
         "isExtraImport": true,
-        "detail": "pydantic",
+        "detail": "starter.ml.data",
+        "documentation": {}
+    },
+    {
+        "label": "inference",
+        "importPath": "starter.ml.model",
+        "description": "starter.ml.model",
+        "isExtraImport": true,
+        "detail": "starter.ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "importPath": "starter.ml.model",
+        "description": "starter.ml.model",
+        "isExtraImport": true,
+        "detail": "starter.ml.model",
         "documentation": {}
     },
     {
@@ -352,7 +376,7 @@
         "kind": 2,
         "importPath": "starter.starter.data",
         "description": "starter.starter.data",
-        "peekOfCode": "def clean_data(df):\n    df.replace({'?': None}, inplace=True)\n    df.dropna(inplace=True)\n    df.drop([\"capital-gain\", \"capital-loss\", \"education-num\", \"fnlgt\"], axis=\"columns\", inplace=True)\n    return df\ndef load_data(path):\n    return pd.read_csv(path, skipinitialspace=True)\ndef save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":",
+        "peekOfCode": "def clean_data(df):\n    df.replace({'?': None}, inplace=True)\n    df.dropna(inplace=True)\n    return df\ndef load_data(path):\n    return pd.read_csv(path, skipinitialspace=True)\ndef save_data(df, path):\n    return df.to_csv(path, index=False)\nif __name__ == \"__main__\":\n    dir = \"../data/\"",
         "detail": "starter.starter.data",
         "documentation": {}
     },
@@ -375,20 +399,47 @@
         "documentation": {}
     },
     {
-        "label": "test_main_route_OK",
+        "label": "greater_than_fifty_sample",
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "peekOfCode": "def greater_than_fifty_sample():\n    sample = {\n        \"age\": 52,\n        \"workclass\": \"Self-emp-inc\",\n        \"fnlgt\": 287927,\n        \"education\": \"HS-grad\",\n        \"education_num\": 9,\n        \"marital_status\": \"Married-civ-spouse\",\n        \"occupation\": \"Exec-managerial\",\n        \"relationship\": \"Wife\",",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
     {
-        "label": "test_main_route_message",
+        "label": "less_than_fifty_sample",
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "peekOfCode": "def less_than_fifty_sample():\n    sample = {\n        \"age\": 39,\n        \"workclass\": \"State-gov\",\n        \"fnlgt\": 77516,\n        \"education\": \"Bachelors\",\n        \"education_num\": 13,\n        \"marital_status\": \"Never-married\",\n        \"occupation\": \"Adm-clerical\",\n        \"relationship\": \"Not-in-family\",",
+        "detail": "starter.starter.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_route",
+        "kind": 2,
+        "importPath": "starter.starter.test_api",
+        "description": "starter.starter.test_api",
+        "peekOfCode": "def test_route():\n    \"\"\"\n    test_route tests the route /\n    \"\"\"\n    r = client.get(\"/\")\n    assert r.status_code == 200\n    assert r.json() == [\"Greetings!\"]\ndef test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /inference/ for the greater than 50K sample",
+        "detail": "starter.starter.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_post_greater_than_fifty",
+        "kind": 2,
+        "importPath": "starter.starter.test_api",
+        "description": "starter.starter.test_api",
+        "peekOfCode": "def test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /inference/ for the greater than 50K sample\n    Args:\n        greater_than_fifty_sample (json):   The sample to be tested against the model for the greater than 50K sample\n    \"\"\"\n    r = client.post(\"/inference/\", json=greater_than_fifty_sample)\n    assert r.status_code == 200\n    assert r.json() == \">50K\"\ndef test_post_less_than_fifty(less_than_fifty_sample):",
+        "detail": "starter.starter.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_post_less_than_fifty",
+        "kind": 2,
+        "importPath": "starter.starter.test_api",
+        "description": "starter.starter.test_api",
+        "peekOfCode": "def test_post_less_than_fifty(less_than_fifty_sample):\n    \"\"\"\n    test_post_less_than_fifty tests the route /inference/ for the less than 50K sample\n    Args:\n        less_than_fifty_sample (json): The sample to be tested against the model for the less than 50K sample\n    \"\"\"\n    response = client.post(\"/inference/\", json=less_than_fifty_sample)\n    assert response.status_code == 200\n    assert response.json() == \"<=50K\"",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
@@ -397,8 +448,26 @@
         "kind": 5,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "client = TestClient(app)\ndef test_main_route_OK():\n    route = client.get(\"/\")\n    assert route.status_code == 200\ndef test_main_route_message():\n    route = client.get(\"/\")\n    assert route.json() == \"Greetings!!!\"",
+        "peekOfCode": "client = TestClient(app)\n@pytest.fixture(scope='session')\ndef greater_than_fifty_sample():\n    sample = {\n        \"age\": 52,\n        \"workclass\": \"Self-emp-inc\",\n        \"fnlgt\": 287927,\n        \"education\": \"HS-grad\",\n        \"education_num\": 9,\n        \"marital_status\": \"Married-civ-spouse\",",
         "detail": "starter.starter.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 2,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "def data():\n    \"\"\"\n    data fixture\n    Returns:\n        np.array, np.array: features and label\n    \"\"\"\n    X_train = np.array([[1, 2, 3.0, 4, 5, 6],\n                  [7, 8, 9.0, 10, 11, 12],\n                  [14, 15, 1.0, 16, 17, 18],\n                  [1, 2, 5.0, 4, 5, 6],",
+        "detail": "starter.starter.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "prediction",
+        "kind": 2,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "def prediction():\n    \"\"\"\n    prediction fixture\n    Returns:\n        np.array: prediction \n    \"\"\"\n    return np.array([0, 1, 1, 1, 0])\ndef test_train_model(data):\n    \"\"\"\n    test_train_model tests the type of train_model function",
+        "detail": "starter.starter.test_model",
         "documentation": {}
     },
     {
@@ -406,16 +475,25 @@
         "kind": 2,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "def test_train_model():\n    rf = train_model(np.array([[1.0, 2.0], [2.0, 3.0]]), np.array([[1], [0]]))\n    assert type(rf) == LogisticRegression\ndef test_inference_output_shape():\n    model = LogisticRegression()\n    model.fit(np.array([[1.0, 2.0], [2.0, 3.0]]), np.array([[1], [0]]))\n    assert len(model.predict(np.arange(4).reshape(2, 2))) == 2",
+        "peekOfCode": "def test_train_model(data):\n    \"\"\"\n    test_train_model tests the type of train_model function\n    Args:\n        data (np.array, np.array): features and label arrays\n    \"\"\"\n    X_train, y_train = data\n    lr = RandomForestClassifier()\n    model = train_model(X_train, y_train)\n    assert type(lr) == type(model)",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
     {
-        "label": "test_inference_output_shape",
+        "label": "test_inference",
         "kind": 2,
         "importPath": "starter.starter.test_model",
         "description": "starter.starter.test_model",
-        "peekOfCode": "def test_inference_output_shape():\n    model = LogisticRegression()\n    model.fit(np.array([[1.0, 2.0], [2.0, 3.0]]), np.array([[1], [0]]))\n    assert len(model.predict(np.arange(4).reshape(2, 2))) == 2",
+        "peekOfCode": "def test_inference(data):\n    \"\"\"\n    test_inference tests the type of inference function as well as the length of the prediction array\n    Args:\n        data (np.array, np.array): features and label arrays\n    \"\"\"\n    X_train, y_train = data\n    lr = RandomForestClassifier()\n    model = lr.fit(X_train, y_train)\n    prediction = inference(model, X_train)",
+        "detail": "starter.starter.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "test_compute_model_metrics",
+        "kind": 2,
+        "importPath": "starter.starter.test_model",
+        "description": "starter.starter.test_model",
+        "peekOfCode": "def test_compute_model_metrics(data, prediction):\n    \"\"\"\n    test_compute_model_metrics tests the type of precision, recall, and f1-score\n    Args:\n        data (np.array, np.ndarray): features and label arrays\n        prediction (np.array): prediction array\n    \"\"\"\n    _, y = data\n    precision, recall, fbeta = compute_model_metrics(y, prediction)\n    assert isinstance(precision, float), f'precision of type float expected, but got type: {type(precision)}'",
         "detail": "starter.starter.test_model",
         "documentation": {}
     },
@@ -460,7 +538,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_dir = \"../model/\"  # the directory where the model will be stored.\nsave_model(encoder, os.path.join(model_dir, \"encoder.pkl\")) # save the label encoder\nsave_model(lb, os.path.join(model_dir, \"lb.pkl\")) # save the encoder\nmodel_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model",
+        "peekOfCode": "model_dir = \"../model/\"  # the directory where the model will be stored.\nsave_model(encoder, os.path.join(model_dir, \"encoder.pkl\")) # save the label encoder\nsave_model(lb, os.path.join(model_dir, \"lb.pkl\")) # save the encoder\nmodel_path = os.path.join(model_dir, \"rf_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, test_encoder, test_lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -469,7 +547,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "model_path = os.path.join(model_dir, \"lr_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data",
+        "peekOfCode": "model_path = os.path.join(model_dir, \"rf_model.pkl\") # path to the model\nslice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, test_encoder, test_lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -478,7 +556,7 @@
         "kind": 5,
         "importPath": "starter.starter.train_model",
         "description": "starter.starter.train_model",
-        "peekOfCode": "slice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, encoder, lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data",
+        "peekOfCode": "slice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output\n# Process the test data with the process_data function.\nX_test, y_test, test_encoder, test_lb = process_data(\n    test, categorical_features=cat_features, label=\"salary\", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder\n# Train and save a model.\nclassifier = train_model(X_train, y_train)  # train the model\nsave_model(classifier, model_path)\ny_train_predict = inference(classifier, X_train)    # make predictions on the training data\ntrain_precision, train_recall, train_fbeta = compute_model_metrics(y_train, y_train_predict)    # compute the metrics for the training data\nprint(f\"train_precision: {train_precision}, train_recall: {train_recall}, train_fbeta: {train_fbeta}\")  # print the metrics for the training data",
         "detail": "starter.starter.train_model",
         "documentation": {}
     },
@@ -532,34 +610,16 @@
         "kind": 6,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "class Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int \n    capital_gain: int \n    capital_loss: int \n    hours_per_week: int \n    workclass: str\n    education: str\n    marital_status: str ",
+        "peekOfCode": "class Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str\n    race: str",
         "detail": "starter.main",
         "documentation": {}
     },
     {
-        "label": "predict_salary_level",
-        "kind": 2,
-        "importPath": "starter.main",
-        "description": "starter.main",
-        "peekOfCode": "def predict_salary_level(item: Data):\n    item_dict = item.dict()\n    X = pd.DataFrame([[item_dict[column]\n                     for column in columns]], columns=columns)\n    X_categorical = X[categorical_features].values\n    X_continuous = X.drop(*[categorical_features], axis=1)\n    X_categorical = encoder.transform(X_categorical)\n    X = np.concatenate([X_continuous, X_categorical], axis=1)\n    pred = int(model.predict(X)[0])\n    return {\"prediction\": pred}",
-        "detail": "starter.main",
-        "documentation": {}
-    },
-    {
-        "label": "columns",
+        "label": "model_dir",
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "columns = 'age,workclass,fnlgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country'.replace(\n    '-', '_').split(',')\ncategorical_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",",
-        "detail": "starter.main",
-        "documentation": {}
-    },
-    {
-        "label": "categorical_features",
-        "kind": 5,
-        "importPath": "starter.main",
-        "description": "starter.main",
-        "peekOfCode": "categorical_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",\n]",
+        "peekOfCode": "model_dir = \"../model/\"\nmodel_path = os.path.join(model_dir, \"rf_model.pkl\")\nencoder_path = os.path.join(model_dir, \"encoder.pkl\")\nlb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -568,7 +628,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "model_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/lr_model.pkl')\nencoder_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)",
+        "peekOfCode": "model_path = os.path.join(model_dir, \"rf_model.pkl\")\nencoder_path = os.path.join(model_dir, \"encoder.pkl\")\nlb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -577,7 +637,52 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "encoder_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/encoder.pkl')\nwith open(model_path, 'rb') as file:\n    model = pickle.load(file)\nwith open(encoder_path, 'rb') as file:\n    encoder = pickle.load(file)\napp = FastAPI()  # initialize the application\nclass Data(BaseModel):",
+        "peekOfCode": "encoder_path = os.path.join(model_dir, \"encoder.pkl\")\nlb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "lb_path",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "lb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "model = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "encoder",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "encoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "lb",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "lb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "cat_features",
+        "kind": 5,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "cat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",\n    \"race\",\n    \"sex\",\n    \"native-country\",\n]",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -586,7 +691,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "app = FastAPI()  # initialize the application\nclass Data(BaseModel):\n    age: int\n    fnlgt: int\n    education_num: int \n    capital_gain: int \n    capital_loss: int \n    hours_per_week: int \n    workclass: str\n    education: str",
+        "peekOfCode": "app = FastAPI()\nclass Data(BaseModel):\n    age: int\n    workclass: str\n    fnlgt: int\n    education: str\n    education_num: int\n    marital_status: str\n    occupation: str\n    relationship: str",
         "detail": "starter.main",
         "documentation": {}
     },
