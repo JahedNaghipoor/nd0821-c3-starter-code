@@ -12,10 +12,18 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
         exit("dvc pull failed")
     os.system("rm -r .dvc .apt/usr/lib/dvc")
 
-model_dir = "../model/"
-model_path = os.path.join(model_dir, "rf_model.pkl")
-encoder_path = os.path.join(model_dir, "encoder.pkl")
-lb_path = os.path.join(model_dir, "lb.pkl")
+model_path = os.path.join(
+    os.path.dirname(
+        os.path.abspath(__file__)),
+    'model/rf_model.pkl')
+encoder_path = os.path.join(
+    os.path.dirname(
+        os.path.abspath(__file__)),
+    'model/encoder.pkl')
+lb_path = os.path.join(
+    os.path.dirname(
+        os.path.abspath(__file__)),
+    'model/lb.pkl')
 
 model = load_model(model_path)
 encoder = load_model(encoder_path)

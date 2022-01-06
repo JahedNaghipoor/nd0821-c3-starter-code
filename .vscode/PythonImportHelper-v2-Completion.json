@@ -615,20 +615,11 @@
         "documentation": {}
     },
     {
-        "label": "model_dir",
-        "kind": 5,
-        "importPath": "starter.main",
-        "description": "starter.main",
-        "peekOfCode": "model_dir = \"../model/\"\nmodel_path = os.path.join(model_dir, \"rf_model.pkl\")\nencoder_path = os.path.join(model_dir, \"encoder.pkl\")\nlb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",",
-        "detail": "starter.main",
-        "documentation": {}
-    },
-    {
         "label": "model_path",
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "model_path = os.path.join(model_dir, \"rf_model.pkl\")\nencoder_path = os.path.join(model_dir, \"encoder.pkl\")\nlb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",",
+        "peekOfCode": "model_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/rf_model.pkl')\nencoder_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/encoder.pkl')\nlb_path = os.path.join(\n    os.path.dirname(",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -637,7 +628,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "encoder_path = os.path.join(model_dir, \"encoder.pkl\")\nlb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",",
+        "peekOfCode": "encoder_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/encoder.pkl')\nlb_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/lb.pkl')\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)",
         "detail": "starter.main",
         "documentation": {}
     },
@@ -646,7 +637,7 @@
         "kind": 5,
         "importPath": "starter.main",
         "description": "starter.main",
-        "peekOfCode": "lb_path = os.path.join(model_dir, \"lb.pkl\")\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",\n    \"marital-status\",\n    \"occupation\",\n    \"relationship\",",
+        "peekOfCode": "lb_path = os.path.join(\n    os.path.dirname(\n        os.path.abspath(__file__)),\n    'model/lb.pkl')\nmodel = load_model(model_path)\nencoder = load_model(encoder_path)\nlb = load_model(lb_path)\ncat_features = [\n    \"workclass\",\n    \"education\",",
         "detail": "starter.main",
         "documentation": {}
     },
