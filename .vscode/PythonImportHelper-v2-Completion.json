@@ -454,7 +454,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /predict for the greater than 50K sample\n    Args:\n        greater_than_fifty_sample (json):   The sample to be tested against the model for the greater than 50K sample\n    \"\"\"\n    r = client.post(\"/predict\", json=greater_than_fifty_sample)\n    assert r.status_code == 200\n    assert r.json() == \">50K\"\ndef test_post_less_than_fifty(less_than_fifty_sample):",
+        "peekOfCode": "def test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /predict for the greater than 50K sample\n    Args:\n        greater_than_fifty_sample (json):   The sample to be tested against the model for the greater than 50K sample\n    \"\"\"\n    r = client.post(\"/predict/\", json=greater_than_fifty_sample)\n    assert r.status_code == 200\n    assert r.json() == \">50K\"\ndef test_post_less_than_fifty(less_than_fifty_sample):",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
@@ -463,7 +463,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_post_less_than_fifty(less_than_fifty_sample):\n    \"\"\"\n    test_post_less_than_fifty tests the route /predict for the less than 50K sample\n    Args:\n        less_than_fifty_sample (json): The sample to be tested against the model for the less than 50K sample\n    \"\"\"\n    response = client.post(\"/predict\", json=less_than_fifty_sample)\n    assert response.status_code == 200\n    assert response.json() == \"<=50K\"",
+        "peekOfCode": "def test_post_less_than_fifty(less_than_fifty_sample):\n    \"\"\"\n    test_post_less_than_fifty tests the route /predict for the less than 50K sample\n    Args:\n        less_than_fifty_sample (json): The sample to be tested against the model for the less than 50K sample\n    \"\"\"\n    response = client.post(\"/predict/\", json=less_than_fifty_sample)\n    assert response.status_code == 200\n    assert response.json() == \"<=50K\"",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
@@ -639,6 +639,24 @@
         "documentation": {}
     },
     {
+        "label": "say_hello",
+        "kind": 2,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "def say_hello():\n    return {\"Greetings!\"}\n@app.post(\"/predict/\")\ndef create_item(data: Data = Body(None,\n                                        example={\n                                            \"age\": 39,\n                                            \"workclass\": \"State-gov\",\n                                            \"fnlgt\": 77516,\n                                            \"education\": \"Bachelors\",\n                                            \"education_num\": 13,",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
+        "label": "create_item",
+        "kind": 2,
+        "importPath": "starter.main",
+        "description": "starter.main",
+        "peekOfCode": "def create_item(data: Data = Body(None,\n                                        example={\n                                            \"age\": 39,\n                                            \"workclass\": \"State-gov\",\n                                            \"fnlgt\": 77516,\n                                            \"education\": \"Bachelors\",\n                                            \"education_num\": 13,\n                                            \"marital_status\": \"Never-married\",\n                                            \"occupation\": \"Adm-clerical\",\n                                            \"relationship\": \"Not-in-family\",",
+        "detail": "starter.main",
+        "documentation": {}
+    },
+    {
         "label": "model_path",
         "kind": 5,
         "importPath": "starter.main",
@@ -751,7 +769,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict\"\nsample = {'age': 42, 'workclass': 'Private', 'fnlgt': 159449, 'education': 'Bachelors', 'education-num': 13, 'marital-status': 'Married-civ-spouse', 'occupation': 'Exec-managerial', 'relationship': 'Husband', 'race': 'White', 'sex': 'Male', 'capital-gain': 5178, 'capital-loss': 0, 'hours-per-week': 40, 'native-country': 'United-States'}\nresponse = requests.post(PREDICT_URI, json = sample)\ndictionary = {\n    'Request body': json.dumps(sample),\n    'Status code': response.status_code,\n}\nprint(json.dumps(dictionary, indent=4))",
+        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict/\"\nsample = {\n        \"age\": 39,\n        \"workclass\": \"State-gov\",\n        \"fnlgt\": 77516,\n        \"education\": \"Bachelors\",\n        \"education_num\": 13,\n        \"marital_status\": \"Never-married\",\n        \"occupation\": \"Adm-clerical\",\n        \"relationship\": \"Not-in-family\",",
         "detail": "api",
         "documentation": {}
     },
@@ -760,7 +778,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "sample = {'age': 42, 'workclass': 'Private', 'fnlgt': 159449, 'education': 'Bachelors', 'education-num': 13, 'marital-status': 'Married-civ-spouse', 'occupation': 'Exec-managerial', 'relationship': 'Husband', 'race': 'White', 'sex': 'Male', 'capital-gain': 5178, 'capital-loss': 0, 'hours-per-week': 40, 'native-country': 'United-States'}\nresponse = requests.post(PREDICT_URI, json = sample)\ndictionary = {\n    'Request body': json.dumps(sample),\n    'Status code': response.status_code,\n}\nprint(json.dumps(dictionary, indent=4))",
+        "peekOfCode": "sample = {\n        \"age\": 39,\n        \"workclass\": \"State-gov\",\n        \"fnlgt\": 77516,\n        \"education\": \"Bachelors\",\n        \"education_num\": 13,\n        \"marital_status\": \"Never-married\",\n        \"occupation\": \"Adm-clerical\",\n        \"relationship\": \"Not-in-family\",\n        \"race\": \"White\",",
         "detail": "api",
         "documentation": {}
     },
@@ -769,7 +787,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "response = requests.post(PREDICT_URI, json = sample)\ndictionary = {\n    'Request body': json.dumps(sample),\n    'Status code': response.status_code,\n}\nprint(json.dumps(dictionary, indent=4))",
+        "peekOfCode": "response = requests.post(PREDICT_URI, data = json.dumps(sample))\ndictionary = {\n    'Request body': json.dumps(sample),\n    'Status code': response.status_code,\n}\nprint(json.dumps(dictionary, indent=4))",
         "detail": "api",
         "documentation": {}
     },

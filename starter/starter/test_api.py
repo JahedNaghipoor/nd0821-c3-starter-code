@@ -64,7 +64,7 @@ def test_post_greater_than_fifty(greater_than_fifty_sample):
     Args:
         greater_than_fifty_sample (json):   The sample to be tested against the model for the greater than 50K sample
     """
-    r = client.post("/predict", json=greater_than_fifty_sample)
+    r = client.post("/predict/", json=greater_than_fifty_sample)
     assert r.status_code == 200
     assert r.json() == ">50K"
 
@@ -77,6 +77,6 @@ def test_post_less_than_fifty(less_than_fifty_sample):
         less_than_fifty_sample (json): The sample to be tested against the model for the less than 50K sample
     """
 
-    response = client.post("/predict", json=less_than_fifty_sample)
+    response = client.post("/predict/", json=less_than_fifty_sample)
     assert response.status_code == 200
     assert response.json() == "<=50K"

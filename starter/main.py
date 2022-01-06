@@ -63,12 +63,12 @@ class Data(BaseModel):
 
 # Define a GET on the specified endpoint.
 @app.get("/")
-async def say_hello():
+def say_hello():
     return {"Greetings!"}
 
 
-@app.post("/predict")
-async def create_item(data: Data = Body(None,
+@app.post("/predict/")
+def create_item(data: Data = Body(None,
                                         example={
                                             "age": 39,
                                             "workclass": "State-gov",
