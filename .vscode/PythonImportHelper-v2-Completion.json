@@ -149,6 +149,14 @@
         "documentation": {}
     },
     {
+        "label": "process_data",
+        "importPath": "ml.data",
+        "description": "ml.data",
+        "isExtraImport": true,
+        "detail": "ml.data",
+        "documentation": {}
+    },
+    {
         "label": "train_model",
         "importPath": "ml.model",
         "description": "ml.model",
@@ -189,6 +197,22 @@
         "documentation": {}
     },
     {
+        "label": "inference",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "importPath": "ml.model",
+        "description": "ml.model",
+        "isExtraImport": true,
+        "detail": "ml.model",
+        "documentation": {}
+    },
+    {
         "label": "Body",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -210,30 +234,6 @@
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "process_data",
-        "importPath": "starter.ml.data",
-        "description": "starter.ml.data",
-        "isExtraImport": true,
-        "detail": "starter.ml.data",
-        "documentation": {}
-    },
-    {
-        "label": "inference",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
-        "isExtraImport": true,
-        "detail": "starter.ml.model",
-        "documentation": {}
-    },
-    {
-        "label": "load_model",
-        "importPath": "starter.ml.model",
-        "description": "starter.ml.model",
-        "isExtraImport": true,
-        "detail": "starter.ml.model",
         "documentation": {}
     },
     {
