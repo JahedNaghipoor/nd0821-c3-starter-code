@@ -27,5 +27,5 @@ def process_data(X, categorical_features=[], label=None, training=True, encoder=
         except AttributeError:
             pass
 
-    X = np.concatenate([X_continuous, X_categorical], axis=1)   
+    X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb

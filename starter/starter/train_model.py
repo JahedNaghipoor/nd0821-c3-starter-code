@@ -35,12 +35,11 @@ X_train, y_train, encoder, lb = process_data(
 model_dir = "../model/"  # the directory where the model will be stored.
 save_model(encoder, os.path.join(model_dir, "encoder.pkl")) # save the label encoder
 save_model(lb, os.path.join(model_dir, "lb.pkl")) # save the encoder
-model_path = os.path.join(model_dir, "lr_model.pkl") # path to the model
+model_path = os.path.join(model_dir, "rf_model.pkl") # path to the model
 slice_output = os.path.join(model_dir,'/slice_output.txt') # path to the slice output
    
-
 # Process the test data with the process_data function.
-X_test, y_test, encoder, lb = process_data(
+X_test, y_test, test_encoder, test_lb = process_data(
     test, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb)    # load the encoder and label encoder
 
 # Train and save a model.

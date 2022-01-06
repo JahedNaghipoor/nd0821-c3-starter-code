@@ -1,5 +1,5 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 import pickle
 
 
@@ -47,7 +47,7 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-    return LogisticRegression().fit(X_train,y_train)
+    return RandomForestClassifier().fit(X_train,y_train)
 
 
 def compute_model_metrics(y, predictions):

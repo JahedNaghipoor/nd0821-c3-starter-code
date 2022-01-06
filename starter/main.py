@@ -1,13 +1,10 @@
-"""
-This code is used to test the API.
-"""
-import os
-import pickle
-from fastapi import FastAPI
-# pydantic is a python data validation library
-from pydantic import BaseModel, Field
+from fastapi import Body, FastAPI
+from pydantic import BaseModel
 import pandas as pd
-import numpy as np
+import os
+
+from starter.ml.data import process_data
+from starter.ml.model import inference, load_model
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
@@ -15,10 +12,17 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
         exit("dvc pull failed")
     os.system("rm -r .dvc .apt/usr/lib/dvc")
 
-columns = 'age,workclass,fnlgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country'.replace(
-    '-', '_').split(',')
+model_dir = "./model/"
+model_path = os.path.join(model_dir, "rf_model.pkl")
+encoder_path = os.path.join(model_dir, "encoder.pkl")
+lb_path = os.path.join(model_dir, "lb.pkl")
 
-categorical_features = [
+model = load_model(model_path)
+encoder = load_model(encoder_path)
+lb = load_model(lb_path)
+
+
+cat_features = [
     "workclass",
     "education",
     "marital-status",
@@ -28,64 +32,75 @@ categorical_features = [
     "sex",
     "native-country",
 ]
-model_path = os.path.join(
-    os.path.dirname(
-        os.path.abspath(__file__)),
-    'model/lr_model.pkl')
-encoder_path = os.path.join(
-    os.path.dirname(
-        os.path.abspath(__file__)),
-    'model/encoder.pkl')
 
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)
-with open(encoder_path, 'rb') as file:
-    encoder = pickle.load(file)
-
-app = FastAPI()  # initialize the application
-
+# Instantiate the app.
+app = FastAPI()
 
 class Data(BaseModel):
     age: int
-    fnlgt: int
-    education_num: int 
-    capital_gain: int 
-    capital_loss: int 
-    hours_per_week: int 
     workclass: str
+    fnlgt: int
     education: str
-    marital_status: str 
+    education_num: int
+    marital_status: str
     occupation: str
     relationship: str
     race: str
     sex: str
+    capital_gain: int
+    capital_loss: int
+    hours_per_week: int
     native_country: str
 
 
-
-@app.get("/")  # greetings route
-async def greetings():
-    """
-    greetings route
-
-    Returns:
-        string: a greetings message
-    """
-    return "Greetings!!!"
+# Define a GET on the specified endpoint.
+@app.get("/")
+async def say_hello():
+    return {"Greetings!"}
 
 
-@app.post("/predict")  # predict route
-def predict_salary_level(item: Data):
-    item_dict = item.dict()
-    X = pd.DataFrame([[item_dict[column]
-                     for column in columns]], columns=columns)
+@app.post("/inference/")
+async def create_item(data: Data = Body(None,
+                                        example={
+                                            "age": 39,
+                                            "workclass": "State-gov",
+                                            "fnlgt": 77516,
+                                            "education": "Bachelors",
+                                            "education_num": 13,
+                                            "marital_status": "Never-married",
+                                            "occupation": "Adm-clerical",
+                                            "relationship": "Not-in-family",
+                                            "race": "White",
+                                            "sex": "Male",
+                                            "capital_gain": 2174,
+                                            "capital_loss": 0,
+                                            "hours_per_week": 40,
+                                            "native_country": "United-States"
+                                        }
+                                        )):
+    dict = {
+        "age": [data.age],
+        "workclass": [data.workclass],
+        "fnlgt": [data.fnlgt],
+        "education": [data.education],
+        "education-num": [data.education_num],
+        "marital-status": [data.marital_status],
+        "occupation": [data.occupation],
+        "relationship": [data.relationship],
+        "race": [data.race],
+        "sex": [data.sex],
+        "capital-gain": [data.capital_gain],
+        "capital-loss": [data.capital_loss],
+        "hours-per-week": [data.hours_per_week],
+        "native-country": [data.native_country],
+    }
 
-    X_categorical = X[categorical_features].values
-    X_continuous = X.drop(*[categorical_features], axis=1)
+    data = pd.DataFrame.from_dict(dict)
+    
+    X, _, _, _ = process_data(
+        data, categorical_features=cat_features, training=False, encoder=encoder
+    )
 
-    X_categorical = encoder.transform(X_categorical)
-
-    X = np.concatenate([X_continuous, X_categorical], axis=1)
-
-    pred = int(model.predict(X)[0])
-    return {"prediction": pred}
+    prediction = inference(model, X.reshape(1, 104))
+    prediction = lb.inverse_transform(prediction)
+    return prediction[0]

@@ -5,7 +5,6 @@ import os
 def clean_data(df):
     df.replace({'?': None}, inplace=True)
     df.dropna(inplace=True)
-    df.drop(["capital-gain", "capital-loss", "education-num", "fnlgt"], axis="columns", inplace=True)
     return df
 
 def load_data(path):
