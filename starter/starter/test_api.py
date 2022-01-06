@@ -59,24 +59,24 @@ def test_route():
 
 def test_post_greater_than_fifty(greater_than_fifty_sample):
     """
-    test_post_greater_than_fifty tests the route /inference/ for the greater than 50K sample
+    test_post_greater_than_fifty tests the route /predict for the greater than 50K sample
 
     Args:
         greater_than_fifty_sample (json):   The sample to be tested against the model for the greater than 50K sample
     """
-    r = client.post("/inference/", json=greater_than_fifty_sample)
+    r = client.post("/predict", json=greater_than_fifty_sample)
     assert r.status_code == 200
     assert r.json() == ">50K"
 
 
 def test_post_less_than_fifty(less_than_fifty_sample):
     """
-    test_post_less_than_fifty tests the route /inference/ for the less than 50K sample
+    test_post_less_than_fifty tests the route /predict for the less than 50K sample
 
     Args:
         less_than_fifty_sample (json): The sample to be tested against the model for the less than 50K sample
     """
 
-    response = client.post("/inference/", json=less_than_fifty_sample)
+    response = client.post("/predict", json=less_than_fifty_sample)
     assert response.status_code == 200
     assert response.json() == "<=50K"

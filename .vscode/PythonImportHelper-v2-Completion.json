@@ -421,7 +421,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_route():\n    \"\"\"\n    test_route tests the route /\n    \"\"\"\n    r = client.get(\"/\")\n    assert r.status_code == 200\n    assert r.json() == [\"Greetings!\"]\ndef test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /inference/ for the greater than 50K sample",
+        "peekOfCode": "def test_route():\n    \"\"\"\n    test_route tests the route /\n    \"\"\"\n    r = client.get(\"/\")\n    assert r.status_code == 200\n    assert r.json() == [\"Greetings!\"]\ndef test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /predict for the greater than 50K sample",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
@@ -430,7 +430,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /inference/ for the greater than 50K sample\n    Args:\n        greater_than_fifty_sample (json):   The sample to be tested against the model for the greater than 50K sample\n    \"\"\"\n    r = client.post(\"/inference/\", json=greater_than_fifty_sample)\n    assert r.status_code == 200\n    assert r.json() == \">50K\"\ndef test_post_less_than_fifty(less_than_fifty_sample):",
+        "peekOfCode": "def test_post_greater_than_fifty(greater_than_fifty_sample):\n    \"\"\"\n    test_post_greater_than_fifty tests the route /predict for the greater than 50K sample\n    Args:\n        greater_than_fifty_sample (json):   The sample to be tested against the model for the greater than 50K sample\n    \"\"\"\n    r = client.post(\"/predict\", json=greater_than_fifty_sample)\n    assert r.status_code == 200\n    assert r.json() == \">50K\"\ndef test_post_less_than_fifty(less_than_fifty_sample):",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
@@ -439,7 +439,7 @@
         "kind": 2,
         "importPath": "starter.starter.test_api",
         "description": "starter.starter.test_api",
-        "peekOfCode": "def test_post_less_than_fifty(less_than_fifty_sample):\n    \"\"\"\n    test_post_less_than_fifty tests the route /inference/ for the less than 50K sample\n    Args:\n        less_than_fifty_sample (json): The sample to be tested against the model for the less than 50K sample\n    \"\"\"\n    response = client.post(\"/inference/\", json=less_than_fifty_sample)\n    assert response.status_code == 200\n    assert response.json() == \"<=50K\"",
+        "peekOfCode": "def test_post_less_than_fifty(less_than_fifty_sample):\n    \"\"\"\n    test_post_less_than_fifty tests the route /predict for the less than 50K sample\n    Args:\n        less_than_fifty_sample (json): The sample to be tested against the model for the less than 50K sample\n    \"\"\"\n    response = client.post(\"/predict\", json=less_than_fifty_sample)\n    assert response.status_code == 200\n    assert response.json() == \"<=50K\"",
         "detail": "starter.starter.test_api",
         "documentation": {}
     },
@@ -727,7 +727,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict/\"\nsample = {\n    \"age\": 42,\n    \"fnlgt\": 159449,\n    \"education-num\": 13,\n    \"capital-gain\": 5178,\n    \"capital-loss\": 0,\n    \"hours-per-week\": 40,\n    \"workclass\": \"Private\",\n    \"education\": \"Bachelors\",",
+        "peekOfCode": "PREDICT_URI = \"https://udacity-mlops-nanodegree-app.herokuapp.com/predict\"\nsample = {\n            \"age\": 39,\n            \"workclass\": \"State-gov\",\n            \"fnlgt\": 77516,\n            \"education\": \"Bachelors\",\n            \"education_num\": 13,\n            \"marital_status\": \"Never-married\",\n            \"occupation\": \"Adm-clerical\",\n            \"relationship\": \"Not-in-family\",",
         "detail": "api",
         "documentation": {}
     },
@@ -736,7 +736,7 @@
         "kind": 5,
         "importPath": "api",
         "description": "api",
-        "peekOfCode": "sample = {\n    \"age\": 42,\n    \"fnlgt\": 159449,\n    \"education-num\": 13,\n    \"capital-gain\": 5178,\n    \"capital-loss\": 0,\n    \"hours-per-week\": 40,\n    \"workclass\": \"Private\",\n    \"education\": \"Bachelors\",\n    \"marital-status\": \"Married-civ-spouse\",",
+        "peekOfCode": "sample = {\n            \"age\": 39,\n            \"workclass\": \"State-gov\",\n            \"fnlgt\": 77516,\n            \"education\": \"Bachelors\",\n            \"education_num\": 13,\n            \"marital_status\": \"Never-married\",\n            \"occupation\": \"Adm-clerical\",\n            \"relationship\": \"Not-in-family\",\n            \"race\": \"White\",",
         "detail": "api",
         "documentation": {}
     },

@@ -67,7 +67,7 @@ async def say_hello():
     return {"Greetings!"}
 
 
-@app.post("/inference/")
+@app.post("/predict")
 async def create_item(data: Data = Body(None,
                                         example={
                                             "age": 39,
