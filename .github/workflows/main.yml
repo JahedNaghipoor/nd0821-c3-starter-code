@@ -40,6 +40,6 @@ jobs:
     - name: run dvc pull
       run: |
         dvc pull        
-    - name: Test with pytest
-      run: |
-        pytest
+    # - name: Test with pytest
+    #   run: |
+    #     pytest
